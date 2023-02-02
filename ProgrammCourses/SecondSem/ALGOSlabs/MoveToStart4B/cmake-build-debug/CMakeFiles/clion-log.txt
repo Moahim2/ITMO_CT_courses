@@ -1,0 +1,16 @@
+C:\Users\Ivanl\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6777.58\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/Ivanl/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/ninja/win/ninja.exe "-DCMAKE_C_COMPILER=C:/Users/Ivanl/с++ compilers/mingw64/bin/gcc.exe" "-DCMAKE_CXX_COMPILER=C:/Users/Ivanl/с++ compilers/mingw64/bin/g++.exe" -G Ninja C:\Users\Ivanl\CLionProjects\Lab2\MoveToStart4B
+-- The C compiler identification is GNU 11.3.0
+-- The CXX compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Users/Ivanl/с++ compilers/mingw64/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Users/Ivanl/с++ compilers/mingw64/bin/g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Ivanl/CLionProjects/Lab2/MoveToStart4B/cmake-build-debug

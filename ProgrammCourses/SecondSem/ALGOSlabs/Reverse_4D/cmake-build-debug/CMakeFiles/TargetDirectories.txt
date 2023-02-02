@@ -1,0 +1,3 @@
+C:/Users/Ivanl/CLionProjects/Lab2/Reverse_4D/cmake-build-debug/CMakeFiles/Reverse_4D.dir
+C:/Users/Ivanl/CLionProjects/Lab2/Reverse_4D/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Ivanl/CLionProjects/Lab2/Reverse_4D/cmake-build-debug/CMakeFiles/rebuild_cache.dir

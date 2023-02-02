@@ -1,0 +1,3 @@
+C:/Users/Ivanl/CLionProjects/Lab2/task3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Ivanl/CLionProjects/Lab2/task3/cmake-build-debug/CMakeFiles/task3.dir
+C:/Users/Ivanl/CLionProjects/Lab2/task3/cmake-build-debug/CMakeFiles/edit_cache.dir
