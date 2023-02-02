@@ -1,3 +1,33 @@
 [submodule "ProgrammCourses/ThirdSem/Android/hw1-calculator-Moahim2"]
 	path = ProgrammCourses/ThirdSem/Android/hw1-calculator-Moahim2
 	url = https://github.com/Android-ITMO-CT-Course/hw1-calculator-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw2-simple-xml-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw2-simple-xml-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw2-simple-xml-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw3-contacts-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw3-contacts-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw3-contacts-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw4-1ch-network-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw4-1ch-network-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw4-1ch-network-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw5-1ch-with-mem-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw5-1ch-with-mem-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw5-1ch-with-mem-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw6-libs-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw6-libs-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw6-libs-Moahim2
+[submodule "ProgrammCourses/ThirdSem/Android/hw7-im-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw7-im-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw7-im-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw8-movie-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw8-movie-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw8-movie-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw9-arch-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw9-arch-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw9-arch-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/hw10-test-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/hw10-test-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/hw10-test-Moahim2.git
+[submodule "ProgrammCourses/ThirdSem/Android/dopochki-Moahim2"]
+	path = ProgrammCourses/ThirdSem/Android/dopochki-Moahim2
+	url = https://github.com/Android-ITMO-CT-Course/dopochki-Moahim2.git
