@@ -1,0 +1,5 @@
+   20 /var/log/dnf.librepo.log
+  807 /var/log/dnf.log
+   30 /var/log/dnf.rpm.log
+    3 /var/log/hawkey.log
+  860 total
