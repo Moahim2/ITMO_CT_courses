@@ -1,0 +1,91 @@
+1)Коммит лишь одного конкретного файла (при нескольких add):
+git commit A.txt -m "abcd"
+
+2)Свой gitignore:
+//с помощью echo написал файл .gitignore со всеми указанными игнорами:
+*.exe
+*.jar
+*.o
+libraries/
+
+//и запушил
+git add .
+git commit -m "gitignore v2"
+git push
+
+3)Простое объединение веток + исправление банальной несовместимости вручную:
+git merge another-piece-of-work
+//затем изменил файл на 2 + 3 = 5 и закомитил
+git add .
+git commit
+
+4)Сохранение состояния + удаление бага: 
+git stash
+//изменил файл удалив нужную строку
+git add .
+git commit -m "delete bug"
+git stash apply stash@{9aaabdc}
+//добавил строку и закомитил
+git commit -m "1"
+
+5)Совмещение веток непоследовательное:
+git merge hot-bugfix
+git rebase
+git rebase hot-bugfix
+
+6)Изменение даты коммита:
+git commit --amend --no-edit --date="1987.01.20 03:20"
+
+7)Изменение ошибки и в реальности и заранее (в прошлом) в истории коммитов:
+git rebase -i fix-old-typo~2
+// изменил коммит с wordl с <pick> на <edit> в виме
+// исправил ошибку
+git add .
+git rebase --continue
+//удалил из файлика историю коммитов и снова исправил
+git add .
+git rebase --continue
+
+8)reflog + откат к коммиту:
+git reflog -p
+// нашел подходящий коммит в истории
+git reset 9e13e6e
+
+9)Объединение коммитов (так можно объединить хоть сколько):
+git rebase -i too-many-commits~2
+//поменял <pick> на <squash> у последнего коммита в нашей ветке
+//в последующей консольке по заданию оставил коментарий 1 коммита
+
+10)Добавление мода к запуску:
+git update-index --chmod=+x script.sh
+git add .
+git commit -m "add chmod"
+
+11)Несколько поэтапных изменений в один коммит остальные в другой (изучение модификаторов у -p (y,n,s)):
+git add -p
+//далее проставляем модификатор s для разбиения на составляющие
+//проставляем y если берем в первую партию (есть task 1) и n если нет
+git commit -m "v1"
+git add . //докидывая все остальное
+git commit -m "v2"
+
+12)Меняем местами коммиты в истории
+git rebase -i
+//далее руками меняем два коммита в виме местами
+
+13)Бинарный поиск с условием (выполняемый файл):
+git bisect start
+git bisect bad
+git bisect good 1.0
+git bisect run ./faulty-check
+git bisect reset
+git push origin 22820a054fa159559fc4b8969c0e45b309e6fe37:search-improved
+
+
+
+
+
+
+
+))) 
+git submodule update --init --remote (реструктуризировать сабмодули для cmake)

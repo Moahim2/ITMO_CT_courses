@@ -1,0 +1,65 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{arcs}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{stackrel}
+\usepackage{xcolor}
+\begin{document}
+\pagestyle{empty}
+\normalsize
+\section{Матанализ от Виноградова}
+\subsection{}
+\textbf{Теорема (Планшерель).} Если $f\in L_{1}(\mathbb{R}) \cap L_{2}(\mathbb{R})$, то $\widehat{f} \in L_{2}(\mathbb{R})$ и
+
+$$\int_{\mathbb{R}}|\widehat{f}|^2=\int_{\mathbb{R}}|f|^2 .$$
+\indent \textbf{Теорема' (Планшерель).} Классическое преобразование Фурье продолжается с множества $L_{1}(\mathbb{R}) \cap L_{2}(\mathbb{R})$ до унитарного оператора в комплексном пространстве $L_2(\mathbb{R})$.
+
+\indent \textbf{Следствие. Обобщенная теорема Планшереля}. Если  $f,g \in L_1(\mathbb{R}) \cap L_2(\mathbb{R})$, то
+$$\int_{\mathbb{R}} \widehat{f}\overline{\widehat{g}}=\int_{\mathbb{R}} f\overline{g}.$$
+\subsection{}
+Пусть $f \in L(\mathbb{R}),\ x \in \mathbb{R},\ \widetilde{f} \in L,\ \widetilde{f}$ определяется равенством $\widetilde{f} = f$ на $[x - \pi,x+\pi).$ Тогда для любого $u \in (x - \pi,x+\pi)$
+
+$$J_A (f,u) - S_{[A]} (\widetilde{f},u) \underset{A\rightarrow+\infty}\longrightarrow 0.$$
+\section{Большое задание от доктора Тренча}
+\subsection{}
+Let $u(x,t)=v(x,t)+q(x);\ $then $u_t = v_t$ and $u_{xx} = v_{xx} + q^{\prime \prime}$, so
+$$v_t = v_{xx} + q^{\prime \prime} + \pi^2\sin{\pi x},\ \ 0 < x < 1,\ \ t > 0,$$
+$$v(0,t)=-q(0),\ \ v_{x}(1,t)=-\pi-q^{\prime}(1),\ \ t > 0,\eqno(A)$$
+$$v(x,0)=2\sin{\pi x} - q(x),\ \ 0\leq x\leq 1 .$$
+\noindent We want {$q^{\prime \prime}(x) = -\pi^2\sin{\pi x},\ q(0)=0,\ q^{\prime}(1) = -\pi;\  q^{\prime}(x)=\pi\cos{\pi x} + a_2;\  q^{\prime}(1) = -\pi \Rightarrow a_2=0;\ $}
+$q^{\prime}(x)=\pi\cos{\pi x};\  q(x)=\sin{\pi x} + a_1;\  q(0)=0 \Rightarrow a_1=0;\  q(x) = \sin{\pi x}.$ Now $(A)$ reduces to
+$$v_t = v_{xx},\ \ 0 < x < 1,\ \ t > 0,$$
+$$v(0,t)=0,\ \ v_{x}(1,t)=0,\ \ t > 0,$$
+$$v(x,0)=\sin{\pi x},\ \ 0\leq x\leq 1.$$
+$$
+\begin{aligned}
+\alpha_{n} &=\ 2\displaystyle\int_{0}^{1}\sin{\pi x}\sin{\frac{(2n-1)\pi x}{2}d x} = \displaystyle\int_{0}^{1}\left[\frac{\cos{(2n - 3)}\pi x}{2} - \frac{\cos{(2n + 1)}\pi x}{2}\right]d x \\
+&=\ \left.\frac{2}{\pi}\left[\frac{\sin{(2n - 3)}\pi x/2}{(2n - 3)} - \frac{\sin{(2n + 1)}\pi x/2}{(2n + 1)}\right]\right|_0^{1} \\
+&=\ (-1)^{n}\frac{2}{\pi}\left[\frac{1}{(2n-3)}-\frac{1}{(2n+1)}\right]=(-1)^{n}\frac{8}{\pi}\frac{1}{(2n + 1)(2n-3)};
+\end{aligned}
+$$
+
+\noindent $S_{M}(x)=\displaystyle\frac{8}{\pi}\sum\limits_{n=1}^{\infty}\frac{(-1)^n}{(2n+1)(2n-3)}\sin{\frac{(2n-1)\pi x}{2}} .$ From Definition $12.1.4,$
+
+$$v(x,t)=\displaystyle\frac{8}{\pi}\sum\limits_{n=1}^{\infty}\frac{(-1)^n}{(2n+1)(2n-3)}e^{-(2n-1)^{2}\pi^{2}t/4}\sin{\frac{(2n-1)\pi x}{2}} .$$
+
+\noindent Therefore, $u(x, t)=\sin{\pi x}+\displaystyle\frac{8}{\pi}\sum\limits_{n=1}^{\infty}\frac{(-1)^n}{(2n+1)(2n-3)}e^{-(2n-1)^{2}\pi^{2}t/4}\sin{\frac{(2n-1)\pi x}{2}} .$
+\section{Маленькие задания от доктора Тренча}
+\subsection{}
+$\sinh{a t}\leftrightarrow\displaystyle\frac{a}{s^{2} - a}$ and $\cosh{a t} \leftrightarrow\displaystyle\frac{1}{s^{2} - a}$, so $H(s)=\displaystyle\frac{a s}{(s^{2}-a^{2})^{2}} .$
+\subsection{}
+$t\sin{\omega t}\leftrightarrow\displaystyle\frac{2\omega s}{(s^{2}+\omega^{2})^{2}}$ and $t\cos{\omega t}\leftrightarrow\displaystyle\frac{s^{2}-\omega^{2}}{(s^{2}+\omega^{2})^{2}}$, so $H(s)=\displaystyle\frac{2\omega s(s^{2} - \omega^{2}}{(s^{2}+\omega^{2})^{4}} .$
+\subsection{}
+Substituting $x = t-\tau$ yields $\displaystyle\int_{0}^{t}f(t-\tau)g(\tau) d\tau=-\displaystyle\int_{t}^{0}f(x)g(t-x)(-d x)=\displaystyle\int_{0}^{t}f(x)g(t-x)d x=\displaystyle\int_{0}^{t}f(\tau)g(t-\tau)d\tau .$
+\end{document}
