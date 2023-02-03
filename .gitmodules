@@ -31,3 +31,39 @@
 [submodule "ProgrammCourses/ThirdSem/Android/dopochki-Moahim2"]
 	path = ProgrammCourses/ThirdSem/Android/dopochki-Moahim2
 	url = https://github.com/Android-ITMO-CT-Course/dopochki-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/calc-trig-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/calc-trig-Moahim2
+	url = https://github.com/itiviti-cpp-2022/calc-trig-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/boe-new-order-cross-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/boe-new-order-cross-Moahim2
+	url = https://github.com/itiviti-cpp-2022/boe-new-order-cross-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/trees-scapegoat-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/trees-scapegoat-Moahim2
+	url = https://github.com/itiviti-cpp-2022/trees-scapegoat-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/lfru-multi-type-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/lfru-multi-type-Moahim2
+	url = https://github.com/itiviti-cpp-2022/lfru-multi-type-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/sort-n-f-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/sort-n-f-Moahim2
+	url = https://github.com/itiviti-cpp-2022/sort-n-f-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/percolation-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/percolation-Moahim2
+	url = https://github.com/itiviti-cpp-2022/percolation-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/open-addressing-hash-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/open-addressing-hash-Moahim2
+	url = https://github.com/itiviti-cpp-2022/open-addressing-hash-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/expressions-int128-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/expressions-int128-Moahim2
+	url = https://github.com/itiviti-cpp-2022/expressions-int128-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/genome-assembly-Moahim2"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/genome-assembly-Moahim2
+	url = https://github.com/itiviti-cpp-2022/genome-assembly-Moahim2.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/syllabus"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/syllabus
+	url = https://github.com/itiviti-cpp-2022/syllabus.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/local-environment"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/local-environment
+	url = https://github.com/itiviti-cpp-2021/local-environment.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/lectures"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/lectures
+	url = https://github.com/itiviti-cpp-2022/lectures.git
