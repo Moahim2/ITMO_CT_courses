@@ -1,3 +1,0 @@
-[submodule "common"]
-	path = src/common
-	url = https://github.com/itiviti-cpp-master/trees-test.git
