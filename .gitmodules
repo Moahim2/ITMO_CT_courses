@@ -67,3 +67,6 @@
 [submodule "ProgrammCourses/SecondSem/c++(Морозов)/lectures"]
 	path = ProgrammCourses/SecondSem/c++(Морозов)/lectures
 	url = https://github.com/itiviti-cpp-2022/lectures.git
+[submodule "ProgrammCourses/SecondSem/c++(Морозов)/boe-new-order-cross-Moahim2/googletest"]
+	path = ProgrammCourses/SecondSem/c++(Морозов)/boe-new-order-cross-Moahim2/googletest
+	url = https://github.com/google/googletest.git
