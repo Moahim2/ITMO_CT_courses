@@ -1,0 +1,36 @@
+Analyzed file is "HWTestInput.txt"
+Summary statistics
+Count of sentences: 45 (45 different sentences).
+Count of words: 275 (155 different words).
+Count of numbers: 37 (23 different numbers).
+Count of amounts: 3 (3 different amounts).
+Count of dates: 3 (3 different dates).
+Statistics on sentences
+    Count of sentences: 45 (45 different sentences).
+    Minimum sentence: "Аргументы командной строки: локаль текста, локаль вывода, файл с текстом, файл отчета.".
+    Maximum sentence: "Число чисел: 40.".
+    Medium length of sentences: 56.089.
+    Min length of sentences: 13 ("Число дат: 3.").
+    Max length of sentences: 211 ("Для каждой категории должна собираться следующая статистика: число вхождений, число различных значений, минимальное значение, максимальное значение, минимальная длина, максимальная длина, среднее значение/длина.").
+Statistics on words
+    Count of words: 275 (155 different words).
+    Minimum word: "GK".
+    Maximum word: "языках".
+    Medium length of words: 6.72.
+    Min length of words: 1 ("с").
+    Max length of words: 14 ("TextStatistics").
+Statistics on numbers
+    Count of numbers: 37 (23 different numbers).
+    Minimum number: -12,345.
+    Maximum number: 12,345.67.
+    Average number: 224.325.
+Statistics on amount of money
+    Count of amounts: 3 (3 different amounts).
+    Minimum amount: $100.00.
+    Maximum amount: $345.67.
+    Average amount: $222.83.
+Statistics on dates
+    Count of dates: 3 (3 different dates).
+    Minimum date: May 19, 2023.
+    Maximum date: Jun 2, 2023.
+    Average date: May 26, 2023.
