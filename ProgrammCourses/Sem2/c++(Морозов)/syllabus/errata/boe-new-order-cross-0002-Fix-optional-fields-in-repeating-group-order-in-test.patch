@@ -1,0 +1,39 @@
+From dc81fff85f287212a7c218f64e73a3bb1e2c36fe Mon Sep 17 00:00:00 2001
+From: Alexander Morozov <gelu.speculum@gmail.com>
+Date: Sat, 5 Mar 2022 17:24:39 +0300
+Subject: [PATCH] Fix optional fields in repeating group order in tests
+
+AlgorithmicIndicator in NewOrderCrossMultileg repeating group is placed
+after LegPositionEffects field.
+---
+ test/src/test.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/test/src/test.cpp b/test/src/test.cpp
+index 9c4c91a..9cb96b0 100644
+--- a/test/src/test.cpp
++++ b/test/src/test.cpp
+@@ -566,16 +566,16 @@ TEST(NewOrderCrossMultilegTest, two_orders)
+     const auto client_capacity = read_value<char>(msg, 75);
+     const auto client_clearing_firm = read_value<String<4>>(msg, 76);
+     const auto client_account_type = read_value<char>(msg, 80);
+-    const auto client_algo = read_value<char>(msg, 81);
+-    const auto client_legs = read_value<String<12>>(msg, 82);
++    const auto client_legs = read_value<String<12>>(msg, 81);
++    const auto client_algo = read_value<char>(msg, 93);
+     const auto house_side = read_value<char>(msg, 94);
+     const auto house_volume = read_value<uint32_t>(msg, 95);
+     const auto house_cl_ord_id = read_value<String<20>>(msg, 99);
+     const auto house_capacity = read_value<char>(msg, 119);
+     const auto house_clearing_firm = read_value<String<4>>(msg, 120);
+     const auto house_account_type = read_value<char>(msg, 124);
+-    const auto house_algo = read_value<char>(msg, 125);
+-    const auto house_legs = read_value<String<12>>(msg, 126);
++    const auto house_legs = read_value<String<12>>(msg, 125);
++    const auto house_algo = read_value<char>(msg, 137);
+     const auto symbol = read_value<String<8>>(msg, 138);
+     EXPECT_EQ(0x85, msg_id);
+     EXPECT_EQ(61111, seq_num);
+-- 
+2.24.3 (Apple Git-128)
+

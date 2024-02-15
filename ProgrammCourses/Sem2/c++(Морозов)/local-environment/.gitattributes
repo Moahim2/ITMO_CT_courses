@@ -1,0 +1,3 @@
+# Make sure our code stays the same
+*.py text=auto eol=lf
+*.sh text=auto eol=lf

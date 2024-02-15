@@ -1,0 +1,6 @@
+[submodule "test"]
+	path = test
+	url = https://github.com/itiviti-cpp-master/trees-scapegoat-test.git
+[submodule "googletest"]
+	path = googletest
+	url = https://github.com/google/googletest

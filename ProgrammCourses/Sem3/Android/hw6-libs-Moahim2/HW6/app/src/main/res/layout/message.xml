@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/contact_information"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="start|bottom"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_message"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="18sp"
+        app:autoSizeMinTextSize="2sp"
+        app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contact_information"
+        android:gravity="start|top"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_message"
+        android:contentDescription="@string/image"
+        android:id="@+id/imageInMessage"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,46 @@
+From cad9edf5be253bd9447fc5ba88e8977e114dd09a Mon Sep 17 00:00:00 2001
+From: Evgeniy Osipov <Evgeniy.Osipov@itiviti.com>
+Date: Sat, 14 May 2022 18:06:43 +0200
+Subject: [PATCH] add missing Track alias
+
+---
+ README.md       | 2 ++
+ include/nbody.h | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/README.md b/README.md
+index 8ef1381..257f2a6 100644
+--- a/README.md
++++ b/README.md
+@@ -168,6 +168,8 @@ public:
+ ```
+ 
+ ```
++using Track = std::vector<Cartesian>;
++
+ class PositionTracker
+ {
+ protected:
+diff --git a/include/nbody.h b/include/nbody.h
+index 1b4e22a..c89e3a1 100644
+--- a/include/nbody.h
++++ b/include/nbody.h
+@@ -1,5 +1,6 @@
+ #include <iostream>
+ #include <string_view>
++#include <vector>
+ 
+ struct Cartesian
+ {
+@@ -63,6 +64,8 @@ public:
+     void update_force(Body & b);
+ };
+ 
++using Track = std::vector<Cartesian>;
++
+ class PositionTracker
+ {
+ protected:
+-- 
+2.8.3
+

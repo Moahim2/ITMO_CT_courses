@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HW3</string>
+    <string name="number_field">Number:\ </string>
+    <plurals name="numberOfContacts" >
+        <item quantity="one">Найден %d контакт</item>
+        <item quantity="few">Найдено %d контакта</item>
+        <item quantity="other">Найдено %d контактов</item>
+    </plurals>
+    <string name="SMS">SMS</string>
+</resources>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_exception"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/result"
+        android:gravity="end"
+        app:layout_constraintStart_toStartOf="@id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@id/my_exception"/>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow android:layout_width="wrap_content">
+
+            <Button
+                android:id="@+id/b7"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__7" />
+
+            <Button
+                android:id="@+id/b8"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/_8" />
+
+            <Button
+                android:id="@+id/b9"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/_9" />
+
+            <Button
+                android:id="@+id/add"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/add" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/b4"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__4" />
+
+            <Button
+                android:id="@+id/b5"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__5" />
+
+            <Button
+                android:id="@+id/b6"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__6" />
+
+            <Button
+                android:id="@+id/sub"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/sub" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/b1"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__1" />
+
+            <Button
+                android:id="@+id/b2"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__2" />
+
+            <Button
+                android:id="@+id/b3"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__3" />
+
+            <Button
+                android:id="@+id/mul"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/mul" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/dot"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/dot" />
+
+            <Button
+                android:id="@+id/b0"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/__0" />
+
+            <Button
+                android:id="@+id/clear"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/clear" />
+
+            <Button
+                android:id="@+id/div"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/div" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/eqv"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="10"
+                android:text="@string/eqv" />
+
+            <Button
+                android:id="@+id/copy"
+                style="?android:attr/buttonBarStyle"
+                android:layout_weight="1"
+                android:text="@string/copy" />
+        </TableRow>
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

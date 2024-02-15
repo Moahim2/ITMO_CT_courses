@@ -1,0 +1,40 @@
+From e39494ca2fb42d22592cc39e27d056af6ae297cd Mon Sep 17 00:00:00 2001
+From: Alexander Morozov <gelu.speculum@gmail.com>
+Date: Fri, 8 Apr 2022 13:47:33 +0300
+Subject: [PATCH] Fix Pool parameter name and usage
+
+It should be a block size, not element count.
+---
+ include/pool.h | 2 +-
+ src/main.cpp   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/pool.h b/include/pool.h
+index 1d47151..e2ec22f 100644
+--- a/include/pool.h
++++ b/include/pool.h
+@@ -7,7 +7,7 @@
+ class PoolAllocator
+ {
+ public:
+-    PoolAllocator(const std::size_t /*count*/, std::initializer_list<std::size_t> /*sizes*/)
++    PoolAllocator(const std::size_t /*block_size*/, std::initializer_list<std::size_t> /*sizes*/)
+     {
+     }
+ 
+diff --git a/src/main.cpp b/src/main.cpp
+index 00aa763..fabc0f0 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -33,7 +33,7 @@ using TestCache = Cache<std::string, String, AllocatorWithPool>;
+ 
+ int main()
+ {
+-    TestCache cache(9, 18, std::initializer_list<std::size_t>{sizeof(String)});
++    TestCache cache(9, 18 * sizeof(String), std::initializer_list<std::size_t>{sizeof(String)});
+     std::string line;
+     while (std::getline(std::cin, line)) {
+         auto & s = cache.get<String>(line);
+-- 
+2.24.3 (Apple Git-128)
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:layout_height="0dp"
+    android:layout_weight="6"
+    android:layout_width="match_parent"
+    android:id="@+id/swipeRefreshLayotListChat">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chats_list_recycler"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:hint="@string/hint_new_chat_message"
+        android:id="@+id/new_chat_message"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/create_chat"
+        android:backgroundTint="@color/teal_700"
+        android:id="@+id/button_for_create_chat"/>
+</LinearLayout>

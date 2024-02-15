@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HW4</string>
+    <string name="hint_new_message">Please, input new message</string>
+    <string name="image" />
+    <string name="send_image">SEND IMAGE</string>
+    <string name="send_text">SEND TEXT</string>
+</resources>

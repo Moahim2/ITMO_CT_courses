@@ -1,0 +1,26 @@
+From 1789f28445ef22ead6c0b7b2ecbd5f9864491067 Mon Sep 17 00:00:00 2001
+From: Alexander Morozov <gelu.speculum@gmail.com>
+Date: Mon, 7 Mar 2022 18:02:06 +0300
+Subject: [PATCH] Fix ReplaceOrderTest.short_and_long_strings_thin_price test
+
+Use proper encoded 'price' value.
+---
+ test/src/test.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/src/test.cpp b/test/src/test.cpp
+index 4a8baab..3846fbb 100644
+--- a/test/src/test.cpp
++++ b/test/src/test.cpp
+@@ -395,7 +395,7 @@ TEST(ReplaceOrderTest, short_and_long_strings_thin_price)
+     it = it + 14;
+ 
+     EXPECT_TRUE(0x00==*it++ && 0x00==*it++ && 0x00==*it++ && 0x64==*it++); // volume
+-    EXPECT_TRUE(0x00==*it++ && 0x00==*it++ && 0x27==*it++ && 0x10==*it++); // price
++    EXPECT_TRUE(0x00==*it++ && 0x00==*it++ && 0x27==*it++ && 0x11==*it++); // price
+     EXPECT_TRUE(0x6B==*it++ && 0x61==*it++ && 0x72==*it++ && 0x6C==*it++ && 0x2E==*it++ && 0x67==*it++); // user
+     EXPECT_EQ(0b00000001, *it++); // bitfield 1
+     EXPECT_EQ(0b00000000, *it++); // bitfield 2
+-- 
+2.24.3 (Apple Git-128)
+

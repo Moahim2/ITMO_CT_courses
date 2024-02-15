@@ -1,0 +1,76 @@
+From d674100354835557a21fd40d144421087f459c8e Mon Sep 17 00:00:00 2001
+From: Alexander Morozov <gelu.speculum@gmail.com>
+Date: Sat, 5 Mar 2022 14:34:08 +0300
+Subject: [PATCH] Fix NewOrderCrossMultileg bitmask test
+
+LegPositionEffects field belongs to the third group of optional fields,
+which means that all three bitmask should be present in the resulting
+message, not only the first one.
+---
+ test/src/test.cpp | 42 +++++++++++++++++++++++-------------------
+ 1 file changed, 23 insertions(+), 19 deletions(-)
+
+diff --git a/test/src/test.cpp b/test/src/test.cpp
+index a51c83e..9c4c91a 100644
+--- a/test/src/test.cpp
++++ b/test/src/test.cpp
+@@ -557,24 +557,26 @@ TEST(NewOrderCrossMultilegTest, two_orders)
+     const auto volume = read_value<uint32_t>(msg, 40);
+     const auto bitfield_num = read_value<uint8_t>(msg, 44);
+     const auto bitfield1 = read_value<uint8_t>(msg, 45);
+-    const auto group_cnt = read_value<uint16_t>(msg, 46);
+-    const auto client_side = read_value<char>(msg, 48);
+-    const auto client_volume = read_value<uint32_t>(msg, 49);
+-    const auto client_cl_ord_id = read_value<String<20>>(msg, 53);
+-    const auto client_capacity = read_value<char>(msg, 73);
+-    const auto client_clearing_firm = read_value<String<4>>(msg, 74);
+-    const auto client_account_type = read_value<char>(msg, 78);
+-    const auto client_algo = read_value<char>(msg, 79);
+-    const auto client_legs = read_value<String<12>>(msg, 80);
+-    const auto house_side = read_value<char>(msg, 92);
+-    const auto house_volume = read_value<uint32_t>(msg, 93);
+-    const auto house_cl_ord_id = read_value<String<20>>(msg, 97);
+-    const auto house_capacity = read_value<char>(msg, 117);
+-    const auto house_clearing_firm = read_value<String<4>>(msg, 118);
+-    const auto house_account_type = read_value<char>(msg, 122);
+-    const auto house_algo = read_value<char>(msg, 123);
+-    const auto house_legs = read_value<String<12>>(msg, 124);
+-    const auto symbol = read_value<String<8>>(msg, 136);
++    const auto bitfield2 = read_value<uint8_t>(msg, 46);
++    const auto bitfield3 = read_value<uint8_t>(msg, 47);
++    const auto group_cnt = read_value<uint16_t>(msg, 48);
++    const auto client_side = read_value<char>(msg, 50);
++    const auto client_volume = read_value<uint32_t>(msg, 51);
++    const auto client_cl_ord_id = read_value<String<20>>(msg, 55);
++    const auto client_capacity = read_value<char>(msg, 75);
++    const auto client_clearing_firm = read_value<String<4>>(msg, 76);
++    const auto client_account_type = read_value<char>(msg, 80);
++    const auto client_algo = read_value<char>(msg, 81);
++    const auto client_legs = read_value<String<12>>(msg, 82);
++    const auto house_side = read_value<char>(msg, 94);
++    const auto house_volume = read_value<uint32_t>(msg, 95);
++    const auto house_cl_ord_id = read_value<String<20>>(msg, 99);
++    const auto house_capacity = read_value<char>(msg, 119);
++    const auto house_clearing_firm = read_value<String<4>>(msg, 120);
++    const auto house_account_type = read_value<char>(msg, 124);
++    const auto house_algo = read_value<char>(msg, 125);
++    const auto house_legs = read_value<String<12>>(msg, 126);
++    const auto symbol = read_value<String<8>>(msg, 138);
+     EXPECT_EQ(0x85, msg_id);
+     EXPECT_EQ(61111, seq_num);
+     EXPECT_EQ("CrossCombo", cross_id);
+@@ -582,8 +584,10 @@ TEST(NewOrderCrossMultilegTest, two_orders)
+     EXPECT_EQ('2', cross_prio);
+     EXPECT_DOUBLE_EQ(12.34, price);
+     EXPECT_EQ(100, volume);
+-    EXPECT_EQ(1, bitfield_num);
++    EXPECT_EQ(3, bitfield_num);
+     EXPECT_EQ(65, bitfield1);
++    EXPECT_EQ(0, bitfield2);
++    EXPECT_EQ(16, bitfield3);
+     EXPECT_EQ(2, group_cnt);
+     EXPECT_EQ(client_order.side.to, client_side);
+     EXPECT_EQ(client_order.volume.to, client_volume);
+-- 
+2.24.3 (Apple Git-128)
+

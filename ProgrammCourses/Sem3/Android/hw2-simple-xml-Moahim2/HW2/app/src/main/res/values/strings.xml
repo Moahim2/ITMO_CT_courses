@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HW2</string>
+    <string name="log_in">LOGIN</string>
+    <string name="e_mail">почта</string>
+    <string name="password">пароль</string>
+    <string name="message" translatable="false" />
+    <string name="noLogin">логин не указан</string>
+    <string name="noPassword">пароль не указан</string>
+    <string name="incorrectlyLoginOrPassword">неправильный пароль или логин</string>
+    <string name="noInfo" translatable="false" />
+    <string name="incorrectEmail">неправильная запись почты</string>
+</resources>

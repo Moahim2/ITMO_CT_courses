@@ -1,0 +1,26 @@
+From 8b5398de348eb87267e34e5c713863ef444dbd93 Mon Sep 17 00:00:00 2001
+From: Alexander Morozov <gelu.speculum@gmail.com>
+Date: Fri, 11 Mar 2022 21:33:39 +0300
+Subject: [PATCH] Fix test for order restated message
+
+Remove junk bytes from source message.
+---
+ test/src/test.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/test/src/test.cpp b/test/src/test.cpp
+index ba7ca35..7631eb5 100644
+--- a/test/src/test.cpp
++++ b/test/src/test.cpp
+@@ -361,8 +361,6 @@ TEST(OrderRestatementTest, decode)
+         0x00,
+         0x02,
+         0x01,
+-        0x80,
+-        0x01,
+         0x64, 0x00, 0x00, 0x00,
+         0x0A, 0x10, 0x1E, 0xB7, 0x5E, 0x39, 0x2F, 0x02
+     };
+-- 
+2.24.3 (Apple Git-128)
+

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HW7.1</string>
+    <string name="hint_new_message">Write new message</string>
+    <string name="send_text">SendText</string>
+    <string name="send_image">SendImage</string>
+    <string name="image" />
+    <string name="title_activity_open_image">OpenImageActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="chat">Chat</string>
+    <string name="create_chat">CREATE NEW CHAT</string>
+    <string name="hint_new_chat_message">format : /chatName /msg or %user /msg</string>
+</resources>

@@ -1,0 +1,68 @@
+From 0adcf6d80cb89ef6dc1c4ebe1a0440074de96969 Mon Sep 17 00:00:00 2001
+From: Alexander Morozov <gelu.speculum@gmail.com>
+Date: Fri, 4 Mar 2022 17:23:58 +0300
+Subject: [PATCH] Fix MMT flags comparison in tests
+
+---
+ test/src/test.cpp | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/test/src/test.cpp b/test/src/test.cpp
+index 54aba8b..1a6582d 100644
+--- a/test/src/test.cpp
++++ b/test/src/test.cpp
+@@ -43,7 +43,7 @@ TEST(ExecutedOrderTest, decode_bofa_executed_order)
+     EXPECT_EQ(LiquidityIndicator::Removed, details.liquidity_indicator);
+     EXPECT_TRUE(details.internalized);
+     EXPECT_FALSE(details.self_trade);
+-    EXPECT_EQ("12-------PH---", details.mmt);
++    EXPECT_EQ("12-------PH---", std::string{details.mmt});
+ }
+ 
+ TEST(ExecutedOrderTest, decode_sgen_executed_order)
+@@ -86,7 +86,7 @@ TEST(ExecutedOrderTest, decode_sgen_executed_order)
+     EXPECT_EQ(LiquidityIndicator::Added, details.liquidity_indicator);
+     EXPECT_FALSE(details.internalized);
+     EXPECT_TRUE(details.self_trade);
+-    EXPECT_EQ("1I-------P----", details.mmt);
++    EXPECT_EQ("1I-------P----", std::string{details.mmt});
+ }
+ 
+ TEST(ExecutedOrderTest, decode_short_token_executed_order)
+@@ -129,7 +129,7 @@ TEST(ExecutedOrderTest, decode_short_token_executed_order)
+     EXPECT_EQ(LiquidityIndicator::None, details.liquidity_indicator);
+     EXPECT_TRUE(details.internalized);
+     EXPECT_TRUE(details.self_trade);
+-    EXPECT_EQ("12-------PH---", details.mmt);
++    EXPECT_EQ("12-------PH---", std::string{details.mmt});
+ }
+ 
+ TEST(ExecutedOrderTest, decode_thin_price_executed_order)
+@@ -172,7 +172,7 @@ TEST(ExecutedOrderTest, decode_thin_price_executed_order)
+     EXPECT_EQ(LiquidityIndicator::Added, details.liquidity_indicator);
+     EXPECT_FALSE(details.internalized);
+     EXPECT_TRUE(details.self_trade);
+-    EXPECT_EQ("1U-------P----", details.mmt);
++    EXPECT_EQ("1U-------P----", std::string{details.mmt});
+ }
+ 
+ TEST(BrokenTradeTest, short_order_token)
+@@ -193,7 +193,7 @@ TEST(BrokenTradeTest, short_order_token)
+     EXPECT_EQ(std::string{"123"}, details.cl_ord_id);
+     EXPECT_EQ(10199810, details.match_number);
+     EXPECT_EQ(BreakReason::Consent, details.reason);
+-    EXPECT_EQ("1OD------P----", details.mmt);
++    EXPECT_EQ("1OD------P----", std::string{details.mmt});
+ }
+ 
+ TEST(BrokenTradeTest, external_reason)
+@@ -214,5 +214,5 @@ TEST(BrokenTradeTest, external_reason)
+     EXPECT_EQ(std::string{"12389555317966"}, details.cl_ord_id);
+     EXPECT_EQ(10199810, details.match_number);
+     EXPECT_EQ(BreakReason::External, details.reason);
+-    EXPECT_EQ("12D------PH---", details.mmt);
++    EXPECT_EQ("12D------PH---", std::string{details.mmt});
+ }
+-- 
+2.24.3 (Apple Git-128)
+

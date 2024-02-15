@@ -1,0 +1,27 @@
+[submodule "calc"]
+	path = calc
+	url = git@github.com:itiviti-cpp-2022/calc.git
+[submodule "boe-new-order"]
+	path = boe-new-order
+	url = git@github.com:itiviti-cpp-2022/boe-new-order.git
+[submodule "user-types"]
+	path = user-types
+	url = git@github.com:itiviti-cpp-2022/user-types.git
+[submodule "simple-vector"]
+	path = simple-vector
+	url = git@github.com:itiviti-cpp-2022/simple-vector.git
+[submodule "lru"]
+	path = lru
+	url = git@github.com:itiviti-cpp-2022/lru.git
+[submodule "inheritance-example"]
+	path = inheritance-example
+	url = git@github.com:itiviti-cpp-2022/inheritance-example.git
+[submodule "enum-map"]
+	path = enum-map
+	url = git@github.com:itiviti-cpp-2022/enum-map.git
+[submodule "iterator"]
+	path = iterator
+	url = git@github.com:itiviti-cpp-2022/iterator.git
+[submodule "class-instantiator"]
+	path = class-instantiator
+	url = git@github.com:itiviti-cpp-2022/class-instantiator.git

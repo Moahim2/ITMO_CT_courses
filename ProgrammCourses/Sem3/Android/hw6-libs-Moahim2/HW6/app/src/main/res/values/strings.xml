@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">HW6</string>
+    <string name="hint_new_message">Write new message</string>
+    <string name="send_text">SendText</string>
+    <string name="send_image">SendImage</string>
+    <string name="title_activity_open_image">OpenImageActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="image" />
+</resources>

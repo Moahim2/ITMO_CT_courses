@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="_0" />
+    <string name="_1" />
+    <string name="_2" />
+    <string name="_3" />
+    <string name="_4" />
+    <string name="_5" />
+    <string name="_6" />
+    <string name="_7" />
+    <string name="__7">7</string>
+    <string name="__6">6</string>
+    <string name="__5">5</string>
+    <string name="__4">4</string>
+    <string name="__3">3</string>
+    <string name="__2">2</string>
+    <string name="__1">1</string>
+    <string name="__0">0</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="add">+</string>
+    <string name="sub">-</string>
+    <string name="mul">*</string>
+    <string name="div">/</string>
+    <string name="clear">C</string>
+    <string name="eqv">=</string>
+    <string name="dot">.</string>
+    <string name="copy">copy</string>
+</resources>

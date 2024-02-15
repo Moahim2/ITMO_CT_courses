@@ -1,0 +1,4 @@
+goto
+exit
+malloc
+using namespace std;
