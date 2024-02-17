@@ -1,0 +1,26 @@
+digraph Tree {
+"E0"[label="E"]
+"E0" -> "T1";
+"E0" -> "E'5";
+"T1"[label="T"]
+"T1" -> "F2";
+"T1" -> "T'4";
+"F2"[label="F"]
+"F2" -> "NUM3";
+"NUM3"[label="NUM"]
+"T'4"[label="T'"]
+"E'5"[label="E'"]
+"E'5" -> "ADD6";
+"E'5" -> "T7";
+"E'5" -> "E'11";
+"ADD6"[label="ADD"]
+"T7"[label="T"]
+"T7" -> "F8";
+"T7" -> "T'10";
+"F8"[label="F"]
+"F8" -> "NUM9";
+"NUM9"[label="NUM"]
+"T'10"[label="T'"]
+"E'11"[label="E'"]
+label="1 + 1";
+}

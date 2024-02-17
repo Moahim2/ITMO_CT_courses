@@ -1,0 +1,102 @@
+digraph Tree {
+"S124"[label="S"]
+"S124" -> "var75";
+"S124" -> "S'76";
+"var75"[label="var"]
+"S'76"[label="S'"]
+"S'76" -> "NAME77";
+"S'76" -> ":78";
+"S'76" -> "Array79";
+"S'76" -> "<80";
+"S'76" -> "E120";
+"S'76" -> ">121";
+"S'76" -> ";122";
+"S'76" -> "$123";
+"NAME77"[label="NAME"]
+":78"[label=":"]
+"Array79"[label="Array"]
+"<80"[label="<"]
+"E120"[label="E"]
+"E120" -> "NAME81";
+"E120" -> "E'82";
+"NAME81"[label="NAME"]
+"E'82"[label="E'"]
+"E'82" -> "<83";
+"E'82" -> "T118";
+"E'82" -> ">119";
+"<83"[label="<"]
+"T118"[label="T"]
+"T118" -> "E86";
+"T118" -> "T'87";
+"E86"[label="E"]
+"E86" -> "NAME84";
+"E86" -> "E'85";
+"NAME84"[label="NAME"]
+"E'85"[label="E'"]
+"T'87"[label="T'"]
+"T'87" -> ",88";
+"T'87" -> "E91";
+"T'87" -> "T'92";
+",88"[label=","]
+"E91"[label="E"]
+"E91" -> "NAME89";
+"E91" -> "E'90";
+"NAME89"[label="NAME"]
+"E'90"[label="E'"]
+"T'92"[label="T'"]
+"T'92" -> ",93";
+"T'92" -> "E96";
+"T'92" -> "T'97";
+",93"[label=","]
+"E96"[label="E"]
+"E96" -> "NAME94";
+"E96" -> "E'95";
+"NAME94"[label="NAME"]
+"E'95"[label="E'"]
+"T'97"[label="T'"]
+"T'97" -> ",98";
+"T'97" -> "E101";
+"T'97" -> "T'102";
+",98"[label=","]
+"E101"[label="E"]
+"E101" -> "NAME99";
+"E101" -> "E'100";
+"NAME99"[label="NAME"]
+"E'100"[label="E'"]
+"T'102"[label="T'"]
+"T'102" -> ",103";
+"T'102" -> "E106";
+"T'102" -> "T'107";
+",103"[label=","]
+"E106"[label="E"]
+"E106" -> "NAME104";
+"E106" -> "E'105";
+"NAME104"[label="NAME"]
+"E'105"[label="E'"]
+"T'107"[label="T'"]
+"T'107" -> ",108";
+"T'107" -> "E111";
+"T'107" -> "T'112";
+",108"[label=","]
+"E111"[label="E"]
+"E111" -> "NAME109";
+"E111" -> "E'110";
+"NAME109"[label="NAME"]
+"E'110"[label="E'"]
+"T'112"[label="T'"]
+"T'112" -> ",113";
+"T'112" -> "E116";
+"T'112" -> "T'117";
+",113"[label=","]
+"E116"[label="E"]
+"E116" -> "NAME114";
+"E116" -> "E'115";
+"NAME114"[label="NAME"]
+"E'115"[label="E'"]
+"T'117"[label="T'"]
+">119"[label=">"]
+">121"[label=">"]
+";122"[label=";"]
+"$123"[label="$"]
+label="var xyz: Array<RandomClass<Int,Int,Int,  String, T, T, T>>;";
+}

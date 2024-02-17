@@ -1,0 +1,34 @@
+digraph Tree {
+"S31"[label="S"]
+"S31" -> "VAR32";
+"S31" -> "S'33";
+"VAR32"[label="VAR"]
+"S'33"[label="S'"]
+"S'33" -> "NAME34";
+"S'33" -> "COL35";
+"S'33" -> "ARR36";
+"S'33" -> "LBR37";
+"S'33" -> "E38";
+"S'33" -> "RBR45";
+"S'33" -> "SCOL46";
+"NAME34"[label="NAME"]
+"COL35"[label="COL"]
+"ARR36"[label="ARR"]
+"LBR37"[label="LBR"]
+"E38"[label="E"]
+"E38" -> "ARR39";
+"E38" -> "LBR40";
+"E38" -> "E41";
+"E38" -> "RBR44";
+"ARR39"[label="ARR"]
+"LBR40"[label="LBR"]
+"E41"[label="E"]
+"E41" -> "NAME42";
+"E41" -> "E'43";
+"NAME42"[label="NAME"]
+"E'43"[label="E'"]
+"RBR44"[label="RBR"]
+"RBR45"[label="RBR"]
+"SCOL46"[label="SCOL"]
+label="var x: Array<Array<Int>>;";
+}

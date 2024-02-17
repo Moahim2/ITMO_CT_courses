@@ -1,0 +1,38 @@
+digraph Tree {
+"S17"[label="S"]
+"S17" -> "var0";
+"S17" -> "S'16";
+"var0"[label="var"]
+"S'16"[label="S'"]
+"S'16" -> "NAME1";
+"S'16" -> ":2";
+"S'16" -> "S''3";
+"NAME1"[label="NAME"]
+":2"[label=":"]
+"S''3"[label="S''"]
+"S''3" -> "Array4";
+"S''3" -> "<5";
+"S''3" -> "E8";
+"S''3" -> ",9";
+"S''3" -> "E12";
+"S''3" -> ">13";
+"S''3" -> ";14";
+"S''3" -> "$15";
+"Array4"[label="Array"]
+"<5"[label="<"]
+"E8"[label="E"]
+"E8" -> "NAME6";
+"E8" -> "E'7";
+"NAME6"[label="NAME"]
+"E'7"[label="E'"]
+",9"[label=","]
+"E12"[label="E"]
+"E12" -> "NAME10";
+"E12" -> "E'11";
+"NAME10"[label="NAME"]
+"E'11"[label="E'"]
+">13"[label=">"]
+";14"[label=";"]
+"$15"[label="$"]
+label="var n : Map<E, E>;";
+}

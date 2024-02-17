@@ -1,0 +1,76 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'antlr'
+    id 'org.jetbrains.kotlin.jvm' version '2.0.0-Beta2'
+}
+
+group = 'levitskiy.hw'
+version = '1.0-SNAPSHOT'
+
+tasks {
+    test {
+
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'junit:junit:4.13.1'
+
+    antlr "org.antlr:antlr4:4.9.3"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava.dependsOn generateGrammarSource
+
+
+idea {
+    module {
+        sourceDirs += file("generated-src/antlr/main/")
+    }
+}
+
+kotlin {
+    dependencies {
+//        testImplementation 'junit:junit:4.12'
+        testCompileOnly ('org.junit.jupiter:junit-jupiter:5.6.0')
+    }
+
+    tasks {
+        test {
+            dependsOn(generateGrammarSource)
+            mustRunAfter generateGrammarSource
+        }
+    }
+
+    jvmToolchain(19)
+}
+
+
+sourceSets.named("test") {
+    java.srcDir("src/test/java")
+    java.srcDir("src/test/kotlin")
+}
+
+compileKotlin {
+    dependsOn(generateGrammarSource)
+    mustRunAfter generateGrammarSource
+}
+
+generateGrammarSource {
+    arguments += [
+            "-Werror", "-long-messages", "-visitor", '-no-listener'
+    ]
+}
+

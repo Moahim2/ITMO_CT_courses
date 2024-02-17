@@ -1,0 +1,36 @@
+digraph Tree {
+"S222"[label="S"]
+"S222" -> "var206";
+"S222" -> "S'207";
+"var206"[label="var"]
+"S'207"[label="S'"]
+"S'207" -> "Array208";
+"S'207" -> ":209";
+"S'207" -> "Array210";
+"S'207" -> "<211";
+"S'207" -> "E218";
+"S'207" -> ">219";
+"S'207" -> ";220";
+"S'207" -> "$221";
+"Array208"[label="Array"]
+":209"[label=":"]
+"Array210"[label="Array"]
+"<211"[label="<"]
+"E218"[label="E"]
+"E218" -> "Array215";
+"E218" -> "<216";
+"E218" -> "E214";
+"E218" -> ">217";
+"Array215"[label="Array"]
+"<216"[label="<"]
+"E214"[label="E"]
+"E214" -> "NAME212";
+"E214" -> "E'213";
+"NAME212"[label="NAME"]
+"E'213"[label="E'"]
+">217"[label=">"]
+">219"[label=">"]
+";220"[label=";"]
+"$221"[label="$"]
+label="var Array: Array<Array<Int>>;";
+}

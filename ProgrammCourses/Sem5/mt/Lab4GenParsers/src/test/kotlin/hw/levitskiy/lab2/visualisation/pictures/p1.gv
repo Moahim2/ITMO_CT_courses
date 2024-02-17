@@ -1,0 +1,26 @@
+digraph Tree {
+"S0"[label="S"]
+"S0" -> "VAR1";
+"S0" -> "S'2";
+"VAR1"[label="VAR"]
+"S'2"[label="S'"]
+"S'2" -> "NAME3";
+"S'2" -> "COL4";
+"S'2" -> "ARR5";
+"S'2" -> "LBR6";
+"S'2" -> "E7";
+"S'2" -> "RBR10";
+"S'2" -> "SCOL11";
+"NAME3"[label="NAME"]
+"COL4"[label="COL"]
+"ARR5"[label="ARR"]
+"LBR6"[label="LBR"]
+"E7"[label="E"]
+"E7" -> "NAME8";
+"E7" -> "E'9";
+"NAME8"[label="NAME"]
+"E'9"[label="E'"]
+"RBR10"[label="RBR"]
+"SCOL11"[label="SCOL"]
+label="var x: Array<Int>;";
+}

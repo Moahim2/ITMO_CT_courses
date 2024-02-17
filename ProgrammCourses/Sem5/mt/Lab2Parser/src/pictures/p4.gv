@@ -1,0 +1,54 @@
+digraph Tree {
+"S78"[label="S"]
+"S78" -> "var53";
+"S78" -> "S'77";
+"var53"[label="var"]
+"S'77"[label="S'"]
+"S'77" -> "NAME54";
+"S'77" -> ":55";
+"S'77" -> "S''56";
+"NAME54"[label="NAME"]
+":55"[label=":"]
+"S''56"[label="S''"]
+"S''56" -> "Array57";
+"S''56" -> "<58";
+"S''56" -> "E73";
+"S''56" -> ">74";
+"S''56" -> ";75";
+"S''56" -> "$76";
+"Array57"[label="Array"]
+"<58"[label="<"]
+"E73"[label="E"]
+"E73" -> "NAME59";
+"E73" -> "E'60";
+"NAME59"[label="NAME"]
+"E'60"[label="E'"]
+"E'60" -> "<61";
+"E'60" -> "T71";
+"E'60" -> ">72";
+"<61"[label="<"]
+"T71"[label="T"]
+"T71" -> "E64";
+"T71" -> "T'65";
+"E64"[label="E"]
+"E64" -> "NAME62";
+"E64" -> "E'63";
+"NAME62"[label="NAME"]
+"E'63"[label="E'"]
+"T'65"[label="T'"]
+"T'65" -> ",66";
+"T'65" -> "E69";
+"T'65" -> "T'70";
+",66"[label=","]
+"E69"[label="E"]
+"E69" -> "NAME67";
+"E69" -> "E'68";
+"NAME67"[label="NAME"]
+"E'68"[label="E'"]
+"T'70"[label="T'"]
+">72"[label=">"]
+">74"[label=">"]
+";75"[label=";"]
+"$76"[label="$"]
+label="var array: Array<Class<Int, String>>;";
+}
