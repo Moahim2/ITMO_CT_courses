@@ -33,7 +33,7 @@
   - [C++(base)](ProgrammCourses/Sem2/c++(Морозов)) - курс по основам c++ (by Морозов (35-37)).
 
 ### Sem1
-  - [Введение в программирование](ProgrammCourses/Sem1/'Введение в программирование') - начало знакомства с java (by kgeorgiy);
+  - [Введение в программирование](ProgrammCourses/Sem1/"Введение в программирование") - начало знакомства с java (by kgeorgiy);
   - [Algos](ProgrammCourses/Sem1/ALGOSlabs) - 1ый семестр алгоритмов и структур данных;
   - [DM](ProgrammCourses/Sem1/DMlabs) - 1ый семестр дискретной математики;
   - [ЭВМ](ProgrammCourses/Sem1/EVM) - курс по эвм (by Скаков);
