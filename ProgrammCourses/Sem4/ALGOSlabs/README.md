@@ -1,1 +1,1 @@
-![](Задачи%20-%20Codeforces.html)
+![t](Задачи%20-%20Codeforces.html)
