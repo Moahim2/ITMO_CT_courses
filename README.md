@@ -42,7 +42,7 @@
 
 ### Sem1
   - [Введение в программирование](ProgrammCourses/Sem1/Введение%20в%20программирование) - начало знакомства с java (by kgeorgiy);
-  - [Algos](ProgrammCourses/Sem1/Algoslabs) - 1ый семестр алгоритмов и структур данных;
+  - [Algos](ProgrammCourses/Sem1/AlgosLabs) - 1ый семестр алгоритмов и структур данных;
   - [DM](ProgrammCourses/Sem1/DMlabs) - 1ый семестр дискретной математики;
   - [ЭВМ](ProgrammCourses/Sem1/EVM) - курс по эвм (by Скаков);
   - [Цифровая культура](ProgrammCourses/Sem1/ЦК) - знакомство с техом, гитом и тд и тп.
