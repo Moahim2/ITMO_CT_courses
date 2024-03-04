@@ -1,14 +1,8 @@
 # Хранилище дз с КТ и связанных проектов.
 
-## Fintech-Project
+## [Fintech-Project](Projects/fintech-company)
 
-
-
-
-## Netty-Server-Project
-
-
-
+## [Netty-Server-Project](Projects/netty-server)
 
 ## CT (Программирование)
 
@@ -20,6 +14,7 @@
   - [Haskell](ProgrammCourses/Sem5/haskell) - курс функционального программирования (by Serokell);
   - [MPP](ProgrammCourses/Sem5/mpp) - курс параллельного программирования (by Роман Елизаров);
   - [MT](ProgrammCourses/Sem5/mt) - курс методов трансляции (курс парсеров и их генерации);
+  - [Tink](ProgrammCourses/Sem5/tink) - 1ый сем курса бэкенда от тинькофф академии;
   - 
 
 ### Sem4
