@@ -1,0 +1,46 @@
+[versions]
+spring-boot = "3.1.4"
+grpc = "2.15.0.RELEASE"
+protobuf = "3.24.4"
+testcontainers = "1.19.1"
+
+
+[plugins]
+spring-plugin = { id = "org.springframework.boot", version.ref = "spring-boot" }
+protobuf-plugin = { id = "com.google.protobuf", version = "0.9.4" }
+
+[libraries]
+spring-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring-boot" }
+spring-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
+spring-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring-boot" }
+spring-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
+spring-email = { module = "org.springframework.boot:spring-boot-starter-mail", version.ref = "spring-boot"}
+
+lombok = { module = "org.projectlombok:lombok", version = "1.18.26" }
+postgresql-driver = { module = "org.postgresql:postgresql", version = "42.6.0" }
+
+liquibase-driver = { module = "org.liquibase:liquibase-core", version = "4.24.0" }
+
+grpc-server = { module = "net.devh:grpc-server-spring-boot-autoconfigure", version.ref = "grpc" }
+grpc-stub = { module = "io.grpc:grpc-stub", version = "1.40.1" }
+grpc-netty = { module = "io.grpc:grpc-netty-shaded", version = "1.38.1" }
+grpc-gen = { module = "io.grpc:protoc-gen-grpc-java", version = "1.59.0" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.59.1"}
+
+protobuf-driver = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
+
+javax-annotation = { module = "javax.annotation:javax.annotation-api", version = "1.3.2" }
+
+#Test libraries
+spring-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref="spring-boot" }
+
+testcontainers-core = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
+testcontainers-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
+jupiter = { module = "org.junit.jupiter:junit-jupiter", version = "5.10.0" }
+
+grpc-test = { module = "io.grpc:grpc-testing", version = "1.51.0"}
+grpc-client = { module = "net.devh:grpc-client-spring-boot-starter", version.ref = "grpc"}
+
+test-formules-poi = { module = "org.apache.poi:poi-ooxml", version = "5.0.0"}

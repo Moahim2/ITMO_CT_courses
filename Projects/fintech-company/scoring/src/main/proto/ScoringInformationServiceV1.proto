@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package com.academy.fintech.scoring_information;
+
+import "CommonUtilityService.proto";
+
+option java_multiple_files = true;
+
+service ScoringInformationService {
+  rpc GetInformation(ScoringInformationRequest) returns (ScoringInformationResponse) {}
+}
+
+message ScoringInformationRequest {
+  string clientId = 1;
+  int32 disbursementAmount = 2;
+}
+
+message ScoringInformationResponse {
+  BigDecimalValue periodPayment = 1;
+  repeated string overdueDates = 2;
+  int32 responseCode = 3;
+  string errorMessage = 4;
+}
+

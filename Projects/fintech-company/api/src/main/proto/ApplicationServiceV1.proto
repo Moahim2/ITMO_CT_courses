@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package com.academy.fintech.application;
+
+option java_multiple_files = true;
+
+service ApplicationService{
+  rpc Create(ApplicationRequest) returns (ApplicationResponse) {}
+}
+
+message ApplicationRequest{
+  string firstName = 1;
+  string lastName = 2;
+  string email = 3;
+  int32 salary = 4;
+  int32 disbursementAmount = 5;
+}
+
+message ApplicationResponse{
+  string applicationId = 1;
+}
+
+// Request Path
+//com.academy.fintech.application.ApplicationService/Create

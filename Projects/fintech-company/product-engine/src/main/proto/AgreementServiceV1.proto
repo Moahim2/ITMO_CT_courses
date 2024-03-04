@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package com.academy.fintech.agreement;
+
+import "CommonUtilityService.proto";
+
+option java_multiple_files = true;
+
+service AgreementService {
+  rpc Create(AgreementRequest) returns (AgreementResponse) {}
+  rpc Activate(DisbursementRequest) returns (DisbursementResponse) {}
+}
+
+message AgreementRequest {
+  string clientId = 1;
+  int32 loanTerm = 2;
+  BigDecimalValue disbursementAmount = 3;
+  BigDecimalValue originationAmount = 4;
+  BigDecimalValue interest = 5;
+  string productName = 6;
+}
+
+message AgreementResponse {
+  string agreementId = 1;
+  int32 responseCode = 2;
+  string errorMessage = 3;
+}
+
+message DisbursementRequest {
+  string agreementId = 1;
+  string data = 2;
+}
+
+message DisbursementResponse {
+    string paymentScheduleId = 1;
+    int32 responseCode = 2;
+    string errorMessage = 3;
+}

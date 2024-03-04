@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db_pe:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=fintech_pe
+      - POSTGRES_USER=postgres_pe
+      - POSTGRES_PASSWORD=postgres_pe
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_pe:/var/lib/postgresql/data
+
+  db_origination:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=fintech_origination
+      - POSTGRES_USER=postgres_origination
+      - POSTGRES_PASSWORD=postgres_origination
+    ports:
+      - '5433:5432'
+    volumes:
+      - db_origination:/var/lib/postgresql/data
+
+volumes:
+  db_pe:
+    driver: local
+  db_origination:
+    driver: local

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="levitskiy.hw.controller.fxml.FXMLClientController" xmlns:fx="http://javafx.com/javafx" alignment="CENTER">
+    <TextArea fx:id="informationArea" editable="false"/>
+    <HBox alignment="CENTER">
+        <TextField fx:id="input1" promptText="Please, enter the absolute file name in your system:" HBox.hgrow="ALWAYS" />
+        <TextField fx:id="input2" promptText="Please, enter the file directory name on server:" HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <Button text="UPLOAD" alignment="CENTER" onAction="#upload" />
+    <TextArea fx:id="errorInformationArea" editable="false"/>
+</VBox>

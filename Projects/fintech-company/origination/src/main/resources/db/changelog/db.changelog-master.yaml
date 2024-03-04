@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - preConditions:
+      - onFail: HALT
+      - dbms:
+          type: postgresql
+  - include:
+      file: classpath:/db/changelog/changes/001-add-client-and-application-tables.sql

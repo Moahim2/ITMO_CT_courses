@@ -1,0 +1,33 @@
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5433/fintech_origination
+    username: postgres_origination
+    password: postgres_origination
+  mail:
+    host: connect.smtp.bz
+    port: 587
+    username: "tinkstudyfintechcompanymoahim@gmail.com"
+    password: "Voy8tgHMHdvL"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8084
+
+grpc:
+  server:
+    port: 9094
+    reflection-service-enabled: true
+
+origination:
+  client:
+    scoring:
+      grpc:
+        host: localhost
+        port: 9095

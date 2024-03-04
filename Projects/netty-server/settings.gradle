@@ -1,0 +1,5 @@
+rootProject.name = 'HW3v2'
+include 'server'
+include 'client'
+include 'common'
+

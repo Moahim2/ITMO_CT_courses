@@ -1,0 +1,48 @@
+plugins {
+    alias libs.plugins.spring.plugin
+    alias libs.plugins.protobuf.plugin
+    id 'java-test-fixtures'
+}
+
+dependencies {
+    implementation libs.protobuf.driver
+    implementation libs.grpc.stub
+    implementation libs.grpc.protobuf
+    implementation libs.javax.annotation
+
+    testFixturesImplementation libs.lombok
+
+    testFixturesImplementation libs.testcontainers.core
+    testFixturesImplementation libs.testcontainers.jupiter
+    testFixturesImplementation libs.jupiter
+    testFixturesImplementation libs.spring.test
+
+    testFixturesImplementation libs.testcontainers.postgresql
+    testFixturesImplementation libs.grpc.test
+    testFixturesImplementation libs.grpc.client
+}
+
+protobuf {
+    protoc {
+        artifact = libs.protobuf.protoc.get()
+    }
+
+    def grpcArtifact = libs.grpc.gen
+    plugins {
+        grpc {
+            artifact = grpcArtifact.get()
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {grpc{}}
+    }
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+

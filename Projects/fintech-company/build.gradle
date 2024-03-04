@@ -1,0 +1,65 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
+group = 'com.academy.fintech'
+version = '1.0-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'java'
+
+    group = rootProject.group
+    version = rootProject.version
+
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(19))
+        }
+    }
+
+    dependencies {
+        implementation libs.spring.starter
+        implementation libs.spring.web
+        implementation libs.spring.actuator
+        compileOnly libs.lombok
+        annotationProcessor libs.lombok
+
+        testImplementation libs.testcontainers.core
+        testImplementation libs.testcontainers.jupiter
+        testImplementation libs.jupiter
+
+        testImplementation libs.spring.test
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    test {
+        jvmArgs([
+                '--enable-preview',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED',
+                '--add-opens', 'jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED'
+        ])
+        useJUnitPlatform()
+        systemProperty "junit.jupiter.extensions.autodetection.enabled", "true"
+        testLogging {
+            showStandardStreams = true
+            exceptionFormat TestExceptionFormat.FULL
+            showExceptions true
+            showCauses true
+            showStackTraces true
+        }
+    }
+
+    jar {
+        enabled = false
+    }
+
+}

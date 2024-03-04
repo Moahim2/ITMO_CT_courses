@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id "application"
+}
+
+group = 'levitskiy.hw'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+dependencies {
+    implementation project(':common')
+}
+
+dependencies {
+    implementation 'io.netty:netty-all:4.1.86.Final'
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = "levitskiy.hw.AuthServer"
+}

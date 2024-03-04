@@ -1,0 +1,14 @@
+server:
+  port: 8085
+
+grpc:
+  server:
+    port: 9095
+
+
+scoring:
+  client:
+    product-engine:
+      grpc:
+        host: localhost
+        port: 9091

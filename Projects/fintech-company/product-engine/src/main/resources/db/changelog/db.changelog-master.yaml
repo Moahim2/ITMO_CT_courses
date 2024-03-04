@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - preConditions:
+      - onFail: HALT
+      - dbms:
+          type: postgresql
+  - include:
+      file: classpath:/db/changelog/changes/001-add-products-schema.sql
+  - include:
+      file: classpath:/db/changelog/changes/002-add-agreements-schema.sql
+  - include:
+      file: classpath:/db/changelog/changes/003-add-product-CL1.0.sql
+  - include:
+      file: classpath:/db/changelog/changes/004-add-schedule-tables.sql
