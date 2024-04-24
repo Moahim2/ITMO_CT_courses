@@ -11,3 +11,7 @@ databaseChangeLog:
       file: classpath:/db/changelog/changes/003-add-product-CL1.0.sql
   - include:
       file: classpath:/db/changelog/changes/004-add-schedule-tables.sql
+  - include:
+      file: classpath:/db/changelog/changes/005-add-accounts-table.sql
+  - include:
+      file: classpath:/db/changelog/changes/006-add-time-columns-to-agreement.sql

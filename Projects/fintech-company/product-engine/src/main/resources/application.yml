@@ -6,6 +6,21 @@ spring:
     username: postgres_pe
     password: postgres_pe
 
+properties:
+  service:
+    payment:
+      make-all-payments:
+        scheduled:
+          fixed-rate: 1
+
+pe:
+  client:
+    kafka:
+      grpc:
+        host: localhost
+        port: 9098
+
+
 grpc:
   server:
     port: 9091
@@ -18,3 +33,6 @@ management.endpoint.metrics.enabled: true
 #  level:
 #    org.springframework.orm.jpa: DEBUG
 #    org.springframework.transaction: DEBUG
+
+server:
+  port: 8088

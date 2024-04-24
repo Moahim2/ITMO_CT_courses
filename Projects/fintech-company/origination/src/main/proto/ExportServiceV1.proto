@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.academy.fintech.kafka;
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+
+service ExportService{
+  rpc ExportTask(ExportNewTaskRequest) returns (google.protobuf.Empty) {}
+}
+
+message ExportNewTaskRequest{
+  string type = 1;
+  string stringKey = 2;
+  int64 numberKey = 3;
+}

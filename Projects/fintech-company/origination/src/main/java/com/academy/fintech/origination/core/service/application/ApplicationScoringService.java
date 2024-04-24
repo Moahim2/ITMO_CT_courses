@@ -1,13 +1,17 @@
 package com.academy.fintech.origination.core.service.application;
 
+import com.academy.fintech.origination.core.kafka.client.KafkaClientService;
 import com.academy.fintech.origination.core.scoring_check.ScoringCheckService;
+import com.academy.fintech.origination.core.service.agreement.AgreementCreationService;
 import com.academy.fintech.origination.core.service.application.db.application.ApplicationService;
 import com.academy.fintech.origination.core.service.application.db.application.ApplicationStatus;
 import com.academy.fintech.origination.core.service.application.db.application.entity.ApplicationEntity;
 import com.academy.fintech.origination.core.service.application.db.client.ClientService;
 import com.academy.fintech.origination.core.service.application.db.client.entity.ClientEntity;
 import com.academy.fintech.origination.core.service.application.email.application.ApplicationEmailService;
+import com.academy.fintech.origination.core.service.transfer.TransferService;
 import com.academy.fintech.origination.public_interface.check_application.dto.CheckApplicationDto;
+import com.academy.fintech.origination.public_interface.transfer.dto.TransferDto;
 import io.grpc.StatusRuntimeException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +25,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
  * Service, which asynchronously sends calculation requests to scoring according to a schedule.
+ * With successful scoring, it creates a contract and transfers money to the client.
  */
 @Slf4j
 @Service
@@ -30,6 +35,9 @@ public class ApplicationScoringService {
     private final ClientService clientService;
     private final ScoringCheckService scoringCheckService;
     private final ApplicationEmailService applicationEmailService;
+    private final TransferService transferService;
+    private final AgreementCreationService agreementCreationService;
+    private final KafkaClientService kafkaClientService;
 
     private final Queue<CheckApplicationDto> queueChecks = new ConcurrentLinkedDeque<>();
 
@@ -47,10 +55,12 @@ public class ApplicationScoringService {
      * if scoring passed without errors.
      * Change status to {@code "ACCEPT"} if score is ok
      * else change status to {@code "CLOSED"}.
+     * Create first version of agreement in pe.
+     * Make transfer (to pg) if score is ok.
      */
     @Async
     @Scheduled(fixedRate = 1000) // A more complex plan will be developed later
-    protected void scoreAndSetStatusImpl() {
+    protected void scoreAndMakeTransferImpl() {
         CheckApplicationDto checkApplicationDto = queueChecks.poll();
         if (checkApplicationDto == null) {
             return;
@@ -62,6 +72,7 @@ public class ApplicationScoringService {
         try {
             int score = scoringCheckService.check(checkApplicationDto);
             setStatusOnScoreAndSendMessageToEmail(score, application);
+            createAgreementAndMakeTransfer(score, application);
         } catch (StatusRuntimeException e) {
             // usually if no connect
             // at this stage, it is unclear what to do with this (it is said that we can do nothing)
@@ -76,6 +87,7 @@ public class ApplicationScoringService {
                 new NoSuchElementException("The client's data was not found!")
         );
         if (score > 0) {
+            log.info("Scoring was good");
             applicationService.setStatus(application, ApplicationStatus.ACCEPTED);
             // COMMENTED BECAUSE THE SERVICE AND HOST DOMAIN IS UNREALISTIC
             // applicationEmailService.sendMsgAboutAppAccepted(client);
@@ -83,5 +95,25 @@ public class ApplicationScoringService {
             applicationService.setStatus(application, ApplicationStatus.CLOSED);
             //applicationEmailService.sendMsgAboutAppRejected(client);
         }
+        kafkaClientService.execute(application.getId());
+    }
+
+    private void createAgreementAndMakeTransfer(int score, ApplicationEntity application) {
+        if (score <= 0) {
+            return;
+        }
+        String agreementId = agreementCreationService
+                .createAgreementAndGetId(application)
+                .orElseThrow(() -> {
+                    log.info("Agreement for application with id %s isn't created in pe.".formatted(application.getId()));
+                    return new IllegalArgumentException("Unexpected error in creating an agreement in pe.");
+                });
+        log.info("Agreement with id" + agreementId + " was created.");
+        transferService.executeTransfer(TransferDto.builder()
+                .agreementId(agreementId)
+                .amount(Integer.toString(application.getDisbursementAmount()))
+                .build()
+        );
+        log.info("Transfer for application " + application.getId() + " was executing to pg.");
     }
 }

@@ -2,6 +2,7 @@ package com.academy.fintech.pe.core.service.agreement;
 
 import com.academy.fintech.agreement.AgreementResponse;
 import com.academy.fintech.agreement.AgreementResponse.Builder;
+import com.academy.fintech.pe.core.kafka.client.KafkaClientService;
 import com.academy.fintech.pe.core.service.agreement.db.agreement.entity.AgreementEntity;
 import com.academy.fintech.pe.core.service.agreement.db.agreement.AgreementService;
 import com.academy.fintech.pe.core.service.agreement.db.agreement.entity.AgreementStatus;
@@ -17,6 +18,7 @@ import javax.annotation.Nullable;
 public class AgreementCreationService {
     private final ProductLimitsCheckerService productLimitsCheckerService;
     private final AgreementService agreementService;
+    private final KafkaClientService kafkaClientService;
 
     /**
      * Creates agreement from {@code dto} and save to db.
@@ -36,6 +38,8 @@ public class AgreementCreationService {
         if (agreementId != null) {
             responseBuilder.setAgreementId(agreementId);
         }
+
+        kafkaClientService.execute(agreementId);
         return responseBuilder.build();
     }
 
@@ -85,4 +89,5 @@ public class AgreementCreationService {
                 .build()
         );
     }
+
 }

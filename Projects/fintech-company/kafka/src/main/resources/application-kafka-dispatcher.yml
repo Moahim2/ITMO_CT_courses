@@ -1,0 +1,6 @@
+exporter:
+  dispatcher:
+    stalled-seconds-rate: 60 # 1 minute
+    export-seconds-rate: 1
+    retry-stalled:
+      passed-minutes-in-processing-to-retry: 15

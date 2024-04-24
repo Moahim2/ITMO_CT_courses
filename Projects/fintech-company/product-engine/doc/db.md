@@ -82,4 +82,17 @@ Unique is the pair of `payment_schedule_id` and `payment_date`.
 - `interest_payment`: `(BigDecimal)` ipmt (annual interest and paid every month);
 - `principal_payment`: `(BigDecimal)` ppmt (annual interest and paid every month).
 
+## Table `account`
 
+Table contains information about all accounts (many accounts for one agreement).
+
+### Columns:
+`PK`: (`agreement_id`, `type`);
+
+`FK (for agreement)`: `agreement_id`;
+
+- `agreement_id`: `(String)` id of agreement (see agreement table);
+- `type`: `(String)` may be 2 types:
+  - `MAIN`: main account of client for a specific agreement (gets payments from client);
+  - `OVERDUE`: account for overdue payments of client;
+- `balance`: `(BigDecimal)` value (not necessarily real money) on this specific account.

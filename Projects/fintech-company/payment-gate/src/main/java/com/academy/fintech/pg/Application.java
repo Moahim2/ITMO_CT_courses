@@ -14,13 +14,6 @@ import org.springframework.context.annotation.FullyQualifiedAnnotationBeanNameGe
 				MultipartAutoConfiguration.class,
 				WebSocketServletAutoConfiguration.class,
 				NettyAutoConfiguration.class,
-
-//				**Use it if work via Rest**
-
-//				RestTemplateAutoConfiguration.class,
-//				HttpMessageConvertersAutoConfiguration.class,
-//				HttpEncodingAutoConfiguration.class,
-//				ErrorMvcAutoConfiguration.class
 		}
 )
 public class Application {

@@ -7,5 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface AgreementRepository extends CrudRepository<AgreementEntity, String> {
+
     List<AgreementEntity> getAgreementEntitiesByClientIdAndStatus(String clientId, AgreementStatus status);
+
+    List<AgreementEntity> getAgreementEntitiesByStatus(AgreementStatus status);
 }

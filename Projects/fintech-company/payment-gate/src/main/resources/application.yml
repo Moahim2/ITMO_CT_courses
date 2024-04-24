@@ -1,0 +1,39 @@
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5434/fintech_pg
+    username: postgres_pg
+    password: postgres_pg
+
+properties:
+  service:
+    transfer:
+      check:
+        initial-delay: 10
+        ground-exponent: 2
+        time-type: SECONDS # for local running and testing the check delay is small (in seconds, but not days)
+        full-max-check-time: 700
+
+server:
+  port: 8061
+
+pg:
+  client:
+    mp:
+      rest:
+        host: localhost
+        port: 8071
+    origination:
+      grpc:
+        host: localhost
+        port: 9094
+    pe:
+      grpc:
+        host: localhost
+        port: 9091
+
+grpc:
+  server:
+    port: 9097
+    reflection-service-enabled: true

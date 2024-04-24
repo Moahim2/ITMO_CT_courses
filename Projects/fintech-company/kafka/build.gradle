@@ -1,0 +1,38 @@
+plugins {
+    alias libs.plugins.spring.plugin
+    alias libs.plugins.protobuf.plugin
+}
+
+dependencies {
+    implementation libs.javax.annotation
+    implementation libs.spring.jpa
+
+    implementation libs.postgresql.driver
+    implementation libs.liquibase.driver
+    implementation libs.liquibase.groovy
+    implementation libs.picocli
+
+    implementation libs.grpc.server
+    implementation libs.grpc.stub
+    implementation libs.grpc.netty
+    implementation libs.protobuf.driver
+
+    implementation libs.spring.kafka
+
+}
+
+protobuf {
+    protoc {
+        artifact = libs.protobuf.protoc.get()
+    }
+
+    def grpcArtifact = libs.grpc.gen
+    plugins {
+        grpc {
+            artifact = grpcArtifact.get()
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {grpc{}}
+    }
+}

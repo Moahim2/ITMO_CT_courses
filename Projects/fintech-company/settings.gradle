@@ -6,4 +6,7 @@ include 'api'
 include 'origination'
 include 'common'
 include 'scoring'
+include 'merchant-provider'
+include 'kafka-db'
+include 'kafka'
 

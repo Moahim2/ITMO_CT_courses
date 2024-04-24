@@ -14,6 +14,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
+import java.time.LocalDate;
 
 @Builder
 @NoArgsConstructor
@@ -37,4 +43,9 @@ public class ApplicationEntity {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status")
     ApplicationStatus status;
+
+    @CreationTimestamp(source = SourceType.DB)
+    private Instant createdAt;
+    @UpdateTimestamp(source = SourceType.DB)
+    private LocalDate lastBusinessDate;
 }

@@ -31,3 +31,15 @@ origination:
       grpc:
         host: localhost
         port: 9095
+    pg:
+      grpc:
+        host: localhost
+        port: 9097
+    pe:
+      grpc:
+        host: localhost
+        port: 9091
+    kafka:
+      grpc:
+        host: localhost
+        port: 9098

@@ -1,6 +1,7 @@
 package com.academy.fintech.origination.core.service.application;
 
 import com.academy.fintech.application.ApplicationResponse;
+import com.academy.fintech.origination.core.kafka.client.KafkaClientService;
 import com.academy.fintech.origination.core.service.application.db.application.ApplicationService;
 import com.academy.fintech.origination.core.service.application.db.application.ApplicationStatus;
 import com.academy.fintech.origination.core.service.application.db.application.entity.ApplicationEntity;
@@ -19,6 +20,7 @@ public class ApplicationCreationService {
     private final ClientCreationService clientCreationService;
     private final ApplicationService applicationService;
     private final ApplicationScoringService applicationScoringService;
+    private final KafkaClientService kafkaClientService;
 
     /**
      * Creates application from dto and save to db.
@@ -37,6 +39,8 @@ public class ApplicationCreationService {
             throws EmailAlreadyOccupiedException, DuplicateException {
         String clientId = clientCreationService.create(applicationDto);
         String applicationId = createImpl(applicationDto, clientId);
+
+        kafkaClientService.execute(applicationId);
 
         addApplicationScoringToSchedule(applicationDto, applicationId, clientId);
 

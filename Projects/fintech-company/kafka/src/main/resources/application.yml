@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: "kafka"
+  config:
+    import:
+      - classpath:application-kafka-dispatcher.yml
+      - classpath:application-kafka-transaction.yml
+  datasource:
+    exporter:
+      hikari:
+        maximum-pool-size: 10
+      url: "jdbc:postgresql://host.docker.internal:5435/exporter?currentSchema=public"
+      username: postgres_kafka
+      password: postgres_kafka
+      liquibase:
+        change-log: classpath:/db/changelog/db.changelog-master.yaml
+    application:
+      url: jdbc:postgresql://host.docker.internal:5433/fintech_origination
+      username: postgres_origination
+      password: postgres_origination
+    agreement:
+      url: jdbc:postgresql://host.docker.internal:5432/fintech_pe
+      username: postgres_pe
+      password: postgres_pe
+  kafka:
+    bootstrap-servers: ${KAFKA_HOST}:9092
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+management:
+  endpoint:
+    health:
+      enabled: true
+      roles: ACTUATOR
+      show-details: ALWAYS
+      probes:
+        enabled: true
+    info:
+      enabled: true
+    loggers:
+      enabled: true
+    prometheus:
+      enabled: true
+    caches:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - prometheus
+          - loggers
+          - caches
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled: false
+    group:
+      readiness:
+        include: '*'
+      liveness:
+        include: '*'
+
+  metrics:
+    distribution:
+      percentiles:
+        "[http.server.requests]": 0.95,0.99
+    web:
+      server:
+        max-uri-tags: 500
+
+grpc:
+  server:
+    port: 9098
+    reflection-service-enabled: true

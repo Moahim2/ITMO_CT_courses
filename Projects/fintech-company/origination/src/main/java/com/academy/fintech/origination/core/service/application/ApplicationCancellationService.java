@@ -1,6 +1,7 @@
 package com.academy.fintech.origination.core.service.application;
 
 import com.academy.fintech.application.CancelResponse;
+import com.academy.fintech.origination.core.kafka.client.KafkaClientService;
 import com.academy.fintech.origination.core.service.application.db.application.entity.ApplicationEntity;
 import com.academy.fintech.origination.core.service.application.db.application.ApplicationService;
 import com.academy.fintech.origination.core.service.application.db.application.ApplicationStatus;
@@ -15,6 +16,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class ApplicationCancellationService {
     private final ApplicationService applicationService;
+    private final KafkaClientService kafkaClientService;
 
     /**
      * Try to cancel of application with id from dto.
@@ -31,6 +33,8 @@ public class ApplicationCancellationService {
                 new NoSuchElementException("There is no application with such an id.")
         );
         boolean isCanceled = cancelIfNotAccepted(application);
+
+        kafkaClientService.execute(application.getId());
 
         return CancelResponse.newBuilder()
                 .setIsCanceled(isCanceled)

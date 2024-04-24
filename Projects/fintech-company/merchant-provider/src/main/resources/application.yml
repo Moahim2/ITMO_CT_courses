@@ -1,0 +1,16 @@
+server:
+  port: 8071
+
+properties:
+  service:
+    transfer:
+      execute:
+        min-transfer-delay-time: 2
+        max-transfer-delay-time: 200
+        time-type: SECONDS # for local running and testing the check delay is small (in seconds, but not days)
+        executor:
+          core-pool-size: 10
+          max-pool-size: 100
+          keep-alive-time: 0
+        random:
+          random-seed: 4875043285743285204

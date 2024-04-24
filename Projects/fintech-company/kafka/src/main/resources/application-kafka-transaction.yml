@@ -1,0 +1,5 @@
+exporter:
+  application:
+    topic: "v5.application"
+  agreement:
+    topic: "v5.agreement"

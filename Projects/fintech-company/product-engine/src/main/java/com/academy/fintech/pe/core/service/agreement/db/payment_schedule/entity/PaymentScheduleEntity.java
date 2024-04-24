@@ -32,7 +32,7 @@ public class PaymentScheduleEntity {
     private long version;
 
     @OneToMany(mappedBy = "paymentSchedule",
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
     private List<PaymentSchedulePaymentEntity> payments;
 }

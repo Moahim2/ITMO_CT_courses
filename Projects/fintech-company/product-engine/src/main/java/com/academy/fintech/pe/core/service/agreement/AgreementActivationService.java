@@ -1,9 +1,11 @@
 package com.academy.fintech.pe.core.service.agreement;
 
 import com.academy.fintech.agreement.DisbursementResponse;
+import com.academy.fintech.pe.core.kafka.client.KafkaClientService;
 import com.academy.fintech.pe.core.service.agreement.db.agreement.AgreementService;
 import com.academy.fintech.pe.core.service.agreement.db.agreement.entity.AgreementEntity;
 import com.academy.fintech.pe.core.service.agreement.db.agreement.entity.AgreementStatus;
+import com.academy.fintech.pe.core.service.payment.AccountCreationService;
 import com.academy.fintech.pe.grpc.agreement.v1.dto.DisbursementDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,8 @@ public class AgreementActivationService {
 
     private final AgreementService agreementService;
     private final PaymentScheduleCreationService paymentScheduleCreationService;
+    private final AccountCreationService accountCreationService;
+    private final KafkaClientService kafkaClientService;
 
     /**
      * Activate agreement with id {@link DisbursementDto#agreementId()} and set its status in db.
@@ -38,6 +42,8 @@ public class AgreementActivationService {
         if (agreement != null) {
             String paymentScheduleId = activateAgreementImpl(agreement, disbursementDto);
             responseBuilder.setPaymentScheduleId(paymentScheduleId);
+
+            kafkaClientService.execute(agreement.getId());
         }
         return responseBuilder.build();
     }
@@ -82,7 +88,7 @@ public class AgreementActivationService {
 
     /**
      * Activate is first disbursement, creating payments and schedule for it,
-     * and setting payment fields in {@code agreement}.
+     * setting payment fields in {@code agreement} and create accounts.
      *
      * @param agreement agreement.
      * @return id of created schedule.
@@ -90,6 +96,7 @@ public class AgreementActivationService {
     private String activateAgreementImpl(AgreementEntity agreement, DisbursementDto disbursementDto) {
         String paymentScheduleId = paymentScheduleCreationService.createSchedule(agreement, disbursementDto);
         setAgreementStatusToActive(agreement);
+        accountCreationService.createAccountsForAgreement(agreement.getId());
         return paymentScheduleId;
     }
 

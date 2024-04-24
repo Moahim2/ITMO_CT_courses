@@ -13,12 +13,23 @@ import java.util.Optional;
 public class AgreementService {
     private final AgreementRepository agreementRepository;
 
+    /**
+     * Use it for creating new entity in database (entity without setting id)
+     * @return id of creating agreement
+     */
     public String createAndGetId(AgreementEntity agreement) {
         return agreementRepository.save(agreement).getId();
     }
 
     public Optional<AgreementEntity> get(String id) {
         return agreementRepository.findById(id);
+    }
+
+    /**
+     * Use it to save an entity that has been modified but already exists in the database.
+     */
+    public void save(AgreementEntity agreement) {
+        createAndGetId(agreement);
     }
 
     /**
@@ -33,5 +44,9 @@ public class AgreementService {
 
     public List<AgreementEntity> getAllActiveAgreements(String clientId) {
         return agreementRepository.getAgreementEntitiesByClientIdAndStatus(clientId, AgreementStatus.ACTIVE);
+    }
+
+    public List<AgreementEntity> getAllActiveAgreements() {
+        return agreementRepository.getAgreementEntitiesByStatus(AgreementStatus.ACTIVE);
     }
 }

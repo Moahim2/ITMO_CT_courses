@@ -1,4 +1,9 @@
 version: '3.8'
+
+networks:
+  exporter:
+    driver: bridge
+
 services:
   db_pe:
     image: postgres:14.1-alpine
@@ -11,6 +16,8 @@ services:
       - '5432:5432'
     volumes:
       - db_pe:/var/lib/postgresql/data
+    networks:
+      - exporter
 
   db_origination:
     image: postgres:14.1-alpine
@@ -23,9 +30,114 @@ services:
       - '5433:5432'
     volumes:
       - db_origination:/var/lib/postgresql/data
+    networks:
+      - exporter
+
+  db_pg:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=fintech_pg
+      - POSTGRES_USER=postgres_pg
+      - POSTGRES_PASSWORD=postgres_pg
+    ports:
+      - '5434:5432'
+    volumes:
+      - db_pg:/var/lib/postgresql/data
+
+  db_kafka:
+    image: huntress/postgres-partman:14
+    container_name: db_kafka
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      - POSTGRES_DB=exporter
+      - POSTGRES_USER=postgres_kafka
+      - POSTGRES_PASSWORD=postgres_kafka
+
+      - DB_DATABASE=exporter
+      - DB_PORT=5435
+      - DB_USER=postgres_kafka
+      - DB_PASSWORD=postgres_kafka
+      - DB_SCHEMA=public
+      - DB_PARTMAN_SCHEMA=partman
+    volumes:
+      - ./config/initdb:/docker-entrypoint-initdb.d
+      - db_kafka:/var/lib/postgresql/data
+    networks:
+      - exporter
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.1
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - '2181:2181'
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    healthcheck:
+      test: echo srvr | nc zookeeper 2181 || exit 1
+      start_period: 10s
+      retries: 20
+      interval: 10s
+    networks:
+      - exporter
+
+  broker:
+    image: confluentinc/cp-kafka:7.3.1
+    hostname: broker
+    container_name: broker
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    ports:
+      - '29092:29092'
+      - '9092:9092'
+      - '9101:9101'
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_JMX_PORT: 9101
+      KAFKA_JMX_HOSTNAME: localhost
+    healthcheck:
+      test: nc -z localhost 9092 || exit -1
+      start_period: 15s
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    networks:
+      - exporter
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - "8081:8080"
+    environment:
+      DYNAMIC_CONFIG_ENABLED: true
+      KAFKA_KLUSTERS_0_NAME: default_fintech_exporter
+      KAFKA_KLUSTERS_0_BOOTSTRAP_SERVERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_KLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    networks:
+      - exporter
+    depends_on:
+      - broker
 
 volumes:
   db_pe:
     driver: local
   db_origination:
+    driver: local
+  db_pg:
+    driver: local
+  db_kafka:
     driver: local

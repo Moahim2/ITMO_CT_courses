@@ -7,6 +7,7 @@ import com.academy.fintech.pe.grpc.agreement.v1.dto.DisbursementDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -32,6 +33,24 @@ public class PaymentScheduleService {
                 .stream()
                 .flatMap(schedule -> schedule.getPayments().stream())
                 .filter(payment -> payment.getStatus() == PaymentStatus.OVERDUE)
+                .toList();
+    }
+
+    /**
+     * @param agreementId id of agreement.
+     * @return list with all overdue or future payments in date order from last version of schedule.
+     */
+    public List<PaymentSchedulePaymentEntity> getAllOverdueAndFuturePaymentsInOrder(String agreementId) {
+        return paymentScheduleRepository
+                .getPaymentScheduleEntitiesByAgreementId(agreementId)
+                .stream()
+                .max(Comparator.comparingLong(PaymentScheduleEntity::getVersion))
+                .orElseThrow()
+                .getPayments()
+                .stream()
+                .filter(payment ->
+                        payment.getStatus() == PaymentStatus.OVERDUE || payment.getStatus() == PaymentStatus.FUTURE)
+                .sorted(Comparator.comparing(PaymentSchedulePaymentEntity::getPaymentDate))
                 .toList();
     }
 }

@@ -5,3 +5,5 @@ databaseChangeLog:
           type: postgresql
   - include:
       file: classpath:/db/changelog/changes/001-add-client-and-application-tables.sql
+  - include:
+      file: classpath:/db/changelog/changes/002-add-time-columns-to-application.sql
