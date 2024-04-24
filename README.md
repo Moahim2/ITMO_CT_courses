@@ -4,7 +4,7 @@
 
 ## [Fintech-Project](Projects/fintech-company)
 
-## [Command-Private-Messenger(Server)](https://github.com/earuile-bubble/bubble-server)
+## [Team-Private-Messenger(Server)](https://github.com/earuile-bubble/bubble-server)
 
 ## [Netty-Server-Project](Projects/netty-server)
 
