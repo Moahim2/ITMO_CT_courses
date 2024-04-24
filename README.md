@@ -1,10 +1,14 @@
-# Хранилище дз с КТ и связанных проектов.
+# Хранилище дз с КТ и прочих проектов.
+
+## ПРОЕКТЫ:
 
 ## [Fintech-Project](Projects/fintech-company)
 
+## [Command-Private-Messenger(Server)](https://github.com/earuile-bubble/bubble-server)
+
 ## [Netty-Server-Project](Projects/netty-server)
 
-## CT (Программирование)
+## CT (Программирование):
 
 
 ### Sem6
