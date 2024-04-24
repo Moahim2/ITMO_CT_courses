@@ -3,8 +3,12 @@
 ## ПРОЕКТЫ:
 
 ## [Fintech-Project](Projects/fintech-company)
+  - Большой проект с кучей разных java и не только технологий и концепций.
+  - Начинался как проект с академии бэкенда и продолжается далее.
 
 ## [Team-Private-Messenger(Server)](https://github.com/earuile-bubble/bubble-server)
+  - Полностью внеучебный проект совместно с друзьями.
+  - Так же охватывает много различных тем и в планах будет охватывать (в учебных целях) еще большее их количество.
 
 ## [Netty-Server-Project](Projects/netty-server)
 
