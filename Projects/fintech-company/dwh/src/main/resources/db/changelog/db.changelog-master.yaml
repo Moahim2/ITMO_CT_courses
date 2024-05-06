@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - preConditions:
+      - onFail: HALT
+      - dbms:
+          type: postgresql
+  - include:
+      file: classpath:/db/changelog/changes/001-add-agreement-info-table.sql
+  - include:
+      file: classpath:/db/changelog/changes/002-add-application-info-table.sql

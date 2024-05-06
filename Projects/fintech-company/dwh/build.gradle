@@ -1,0 +1,16 @@
+plugins {
+    alias libs.plugins.spring.plugin
+}
+
+
+dependencies {
+    implementation libs.javax.annotation
+    implementation libs.spring.jpa
+
+    implementation libs.postgresql.driver
+    implementation libs.liquibase.driver
+    implementation libs.liquibase.groovy
+
+    implementation libs.spring.kafka
+    implementation libs.jackson
+}

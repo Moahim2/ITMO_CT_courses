@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: "dwh"
+  config:
+    import:
+      - classpath:application-kafka-transaction.yml
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5436/fintech_dwh
+    username: postgres_dwh
+    password: postgres_dwh
+  kafka:
+    bootstrap-servers: ${KAFKA_HOST}:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.use.type.headers: false
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+management:
+  endpoint:
+    health:
+      enabled: true
+      roles: ACTUATOR
+      show-details: ALWAYS
+      probes:
+        enabled: true
+    info:
+      enabled: true
+    loggers:
+      enabled: true
+    prometheus:
+      enabled: true
+    caches:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - prometheus
+          - loggers
+          - caches
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled: false
+    group:
+      readiness:
+        include: '*'
+      liveness:
+        include: '*'
+
+server:
+  port: 8087
