@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: "test"
+  POSTGRES_USER: "test"
+  POSTGRES_PASSWORD: "test"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres # Sets service name
+  labels:
+    app: postgres # Labels and Selectors
+spec:
+  ports:
+    - port: 5432 # Sets port to run the postgres application
+  selector:
+    app: postgres
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres  # Sets Deployment name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+        network/monitoring: "true"
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: postgres
+          image: postgres:latest # Sets Image
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432  # Exposes container port
+          envFrom:
+            - configMapRef:
+                name: postgres-config

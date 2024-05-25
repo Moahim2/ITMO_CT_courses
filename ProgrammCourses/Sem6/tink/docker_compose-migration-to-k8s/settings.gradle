@@ -1,0 +1,11 @@
+rootProject.name = 'academy-grafana-test'
+
+include 'api'
+include 'db'
+include 'api:grpc'
+include 'api:public_interface'
+include 'api:business-core'
+include 'api:app-server'
+include 'api:grpc:agreement-grpc'
+include 'api:business-core:agreement'
+

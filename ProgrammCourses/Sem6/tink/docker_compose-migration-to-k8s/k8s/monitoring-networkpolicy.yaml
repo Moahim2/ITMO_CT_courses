@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: monitoring
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              network/monitoring: "true"
+  podSelector:
+    matchLabels:
+      network/monitoring: "true"

@@ -1,0 +1,15 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    group = 'com.prm'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+version = System.getenv().getOrDefault("LIB_VERSION", "1.0.0-SNAPSHOT")

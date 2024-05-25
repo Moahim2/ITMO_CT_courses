@@ -1,0 +1,21 @@
+dependencies {
+    implementation project(":api:public_interface")
+
+    implementation libs.postgresql.driver
+
+    implementation libs.cron.utils
+
+    implementation libs.spring.reactive
+    implementation libs.r2dbc
+}
+
+sourceSets {
+    sql {
+        resources {
+            srcDir('src/main/resources/')
+        }
+    }
+    main {
+        compileClasspath += sourceSets.sql.output
+    }
+}

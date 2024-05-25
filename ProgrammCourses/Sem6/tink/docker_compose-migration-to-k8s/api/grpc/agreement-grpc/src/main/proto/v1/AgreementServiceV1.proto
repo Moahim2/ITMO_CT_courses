@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package com.academy.agreement.v1;
+
+message AgreementRequest {
+  string status = 1;
+}
+
+message AgreementResponse {
+  int64 id = 1;
+  string status = 2;
+}
+
+service AgreementService {
+  rpc Create(AgreementRequest) returns (AgreementResponse);
+  rpc Get(AgreementRequest) returns (stream AgreementResponse);
+}

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: liquibase
+  labels:
+    app: liquibase
+spec:
+  selector:
+    matchLabels:
+      app: liquibase
+  template:
+    metadata:
+      labels:
+        network/monitoring: "true"
+        app: liquibase
+    spec:
+      containers:
+        - name: migration
+          args:
+            - update
+          image: test-db:latest
+          imagePullPolicy: "IfNotPresent"
+          env:
+            - name: DB_DATABASE
+              value: test
+            - name: DB_HOST
+              value: postgres
+            - name: DB_PASSWORD
+              value: test
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_SCHEMA
+              value: public
+            - name: DB_USER
+              value: test

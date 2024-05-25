@@ -1,0 +1,29 @@
+plugins {
+    alias(libs.plugins.spring.plugin)
+}
+
+dependencies {
+    implementation project(":api:business-core:agreement")
+
+    implementation project(":api:grpc:agreement-grpc")
+
+    implementation libs.spring.web
+    implementation libs.spring.grpc
+    implementation libs.spring.actuator
+
+    implementation libs.micrometer
+
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    testImplementation libs.jupiter
+    testImplementation libs.junit.platform
+    testImplementation libs.hikari
+    testImplementation libs.testcontainers.jupiter
+    testImplementation libs.testcontainers.postgres
+    testImplementation libs.archunit.junit5
+}
+
+bootJar {
+    archiveFileName = "app.${archiveExtension.get()}"
+}

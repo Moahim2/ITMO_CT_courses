@@ -1,0 +1,74 @@
+[versions]
+spring-boot = "3.1.4"
+
+# Tests
+junit = "5.9.1"
+testcontainers = "1.19.1"
+
+[plugins]
+spring-plugin = { id = "org.springframework.boot", version.ref = "spring-boot" }
+liquibase-plugin = { id = "org.liquibase.gradle", version = "2.2.0" }
+protobuf-plugin = { id = "com.google.protobuf", version = "0.9.4" }
+
+[libraries]
+spring-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
+spring-boot = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring-boot" }
+spring-jdbc = { module = "org.springframework.boot:spring-boot-starter-jdbc", version.ref = "spring-boot" }
+spring-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring-boot" }
+spring-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-boot" }
+spring-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
+spring-reactive = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc", version.ref = "spring-boot" }
+
+spring-grpc = { module = "io.github.lognet:grpc-spring-boot-starter", version = "5.1.5"}
+spring-context-indexer = { module = "org.springframework:spring-context-indexer", version = "6.0.12" }
+
+gprc-stub = { module = "io.grpc:grpc-stub", version = "1.55.1" }
+protobuf-java = { module = "com.google.protobuf:protobuf-java", version = "3.23.0" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.54.1" }
+protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version = "3.23.0" }
+
+liquibase-core = { module = "org.liquibase:liquibase-core", version = "4.21.1" }
+liquibase-groovy = { module = "org.liquibase:liquibase-groovy-dsl", version = "3.0.3" }
+
+lombok = { module = "org.projectlombok:lombok", version = "1.18.30" }
+
+generate-database = {module = "com.processing.database.layer:database-jdbc-annotation-processor", version = "1.1.6"}
+generate-database-spring = {module = "com.processing.database.layer:database-spring", version = "1.1.6"}
+
+jooq = { module = "org.jooq:jooq", version = "3.19.2" }
+
+caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version = "3.1.8" }
+common-lang3 = { module = "org.apache.commons:commons-lang3", version = "3.13.0" }
+common-text = { module = "org.apache.commons:commons-text", version = "1.11.0" }
+common-collection = { module = "org.apache.commons:commons-collections4", version = "4.4"}
+xmlrpc-client = { module = "org.apache.xmlrpc:xmlrpc-client", version = "3.1.3" }
+picocli = { module = "info.picocli:picocli", version = "4.7.3" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version = "2.0.4" }
+cron-utils = { module = "com.cronutils:cron-utils", version = "9.2.0" }
+postgresql-driver = { module = "org.postgresql:postgresql", version = "42.6.0" }
+javax-annotation-api = { module ="javax.annotation:javax.annotation-api", version = "1.3.2" }
+jetbrains-annotations = { module = "org.jetbrains:annotations", version = "24.0.1" }
+micrometer = { module = "io.micrometer:micrometer-registry-prometheus", version = "1.10.6" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version = "2.15.2" }
+logstash-logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.2" }
+r2dbc = {module = "io.r2dbc:r2dbc-postgresql", version = "0.8.13.RELEASE"}
+
+# Tests
+jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junit-platform = { module = "org.junit.platform:junit-platform-launcher", version = "1.9.2" }
+
+mockito = { module = "org.mockito:mockito-core", version = "4.9.0" }
+awaitility = { module = "org.awaitility:awaitility", version = "4.2.0" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version = "4.9.0" }
+common-io = { module = "commons-io:commons-io", version = "2.13.0" }
+mockserver-client = { module = "org.mock-server:mockserver-client-java", version = "5.15.0" }
+
+archunit-junit5 = { module = "com.tngtech.archunit:archunit-junit5", version = "1.2.1" }
+
+testcontainers-kafka = { module = "org.testcontainers:kafka", version.ref = "testcontainers" }
+testcontainers-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
+testcontainers-postgres = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
+testcontainers-mockserver = { module = "org.testcontainers:mockserver", version.ref = "testcontainers" }
+
+hikari = { module = "com.zaxxer:HikariCP", version = "5.0.1" }
+kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "3.3.1" }

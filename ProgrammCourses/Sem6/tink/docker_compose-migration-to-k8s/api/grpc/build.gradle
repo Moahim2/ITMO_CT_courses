@@ -1,0 +1,51 @@
+plugins {
+    alias(libs.plugins.protobuf.plugin) apply false
+}
+
+subprojects {
+    dependencies {
+        api libs.spring.grpc
+
+        implementation libs.spring.boot
+        implementation libs.javax.annotation.api
+        implementation libs.protobuf.java.util
+        implementation libs.protobuf.java
+        implementation libs.gprc.stub
+        implementation libs.grpc.protobuf
+    }
+
+    var noProtoModules = ["grpc-common"]
+
+    if (noProtoModules.contains(project.name)) {
+        return
+    }
+
+    apply plugin: "com.google.protobuf"
+
+    protobuf {
+        protoc {
+            artifact = "com.google.protobuf:protoc:3.19.1"
+        }
+        plugins {
+            grpc {
+                artifact = "io.grpc:protoc-gen-grpc-java:1.42.1"
+            }
+        }
+        generateProtoTasks {
+            all()*.plugins {
+                grpc {}
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            proto {
+                srcDir "$buildDir/resultProto"
+            }
+            java {
+                srcDirs("build/generated/source/proto/main")
+            }
+        }
+    }
+}

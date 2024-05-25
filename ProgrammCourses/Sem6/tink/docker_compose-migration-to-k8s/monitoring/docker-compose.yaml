@@ -1,0 +1,109 @@
+version: '3.8'
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  prometheus_data: {}
+
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_DB: test
+      POSTGRES_PASSWORD: test
+    networks:
+      - monitoring
+
+  api-application:
+    image: academy-grafana-test-api:latest
+    container_name: api
+    ports:
+      - 9091:9091
+      - 8080:8080
+    environment:
+      - DB_DATABASE=test
+      - DB_PORT=5432
+      - DB_HOST=postgres
+      - DB_PASSWORD=test
+      - DB_SCHEMA=public
+      - DB_USER=test
+    networks:
+      - monitoring
+    depends_on:
+      - db
+      - liquibase
+
+  liquibase:
+    image: test-db:latest
+    container_name: migration
+    command: "update"
+    environment:
+      - DB_DATABASE=test
+      - DB_PORT=5432
+      - DB_HOST=postgres
+      - DB_PASSWORD=test
+      - DB_SCHEMA=public
+      - DB_USER=test
+    networks:
+      - monitoring
+    depends_on:
+      - db
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources
+    networks:
+      - monitoring
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    expose:
+      - 9100
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    expose:
+      - 9090
+    networks:
+      - monitoring

@@ -1,0 +1,22 @@
+plugins {
+    alias(libs.plugins.liquibase.plugin)
+}
+
+dependencies {
+    liquibaseRuntime(libs.liquibase.core)
+    liquibaseRuntime(libs.liquibase.groovy)
+    liquibaseRuntime(libs.postgresql.driver)
+    liquibaseRuntime(libs.picocli)
+}
+
+liquibase {
+    activities {
+        main {
+            changelogFile "./changelog/root-changelog.yml"
+            url "jdbc:postgresql://$System.env.DB_HOST:$System.env.DB_PORT/$System.env.DB_DATABASE"
+            username "$System.env.DB_USER"
+            password "$System.env.DB_PASSWORD"
+            defaultSchemaName System.getenv().getOrDefault("DB_SCHEMA", "public")
+        }
+    }
+}

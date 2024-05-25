@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: "api"
+  r2dbc:
+    url: "r2dbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}"
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+grpc:
+  port: 9091
+  enable-reflection: true
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      roles: ACTUATOR
+      show-details: ALWAYS
+      probes:
+        enabled: true
+    info:
+      enabled: true
+    loggers:
+      enabled: true
+    prometheus:
+      enabled: true
+    caches:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - prometheus
+          - loggers
+          - caches
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled: false
+    group:
+      readiness:
+        include: '*'
+      liveness:
+        include: '*'
